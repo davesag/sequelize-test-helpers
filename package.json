@@ -1,0 +1,86 @@
+{
+  "name": "sequelize-test-helpers",
+  "version": "1.0.0",
+  "description": "A collection of utilities to help with unit-testing sequelize models",
+  "author": "Dave Sag <davesag@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": "10.5.0",
+    "npm": "6.1.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+    "lint": "eslint .",
+    "precommit": "lint-staged",
+    "prettier": "prettier --single-quote --no-semi --write '**/*.{js,json}'",
+    "test": "find ./test/unit -name '*spec.js' | NODE_ENV=test xargs mocha --require ./test/unit/test_helper.js",
+    "test:coverage": "find ./test/unit -name '*spec.js' | NODE_ENV=test xargs nyc mocha --require ./test/unit/test_helper.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davesag/sequelize-test-helpers.git"
+  },
+  "keywords": [
+    "sequelize",
+    "mock",
+    "mocking",
+    "unit-testing"
+  ],
+  "lint-staged": {
+    "**/*.{js,json}": [
+      "prettier --single-quote --no-semi --write",
+      "git add"
+    ]
+  },
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 100,
+    "statements": 100,
+    "functions": 100,
+    "branches": 100,
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "index.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "all": true,
+    "cache": true
+  },
+  "bugs": {
+    "url": "https://github.com/davesag/sequelize-test-helpers/issues"
+  },
+  "homepage": "https://github.com/davesag/sequelize-test-helpers#readme",
+  "devDependencies": {
+    "ajv": "^6.5.0",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.8.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-mocha": "^5.0.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.1.3",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "prettier": "^1.13.4",
+    "proxyquire": "^2.0.0",
+    "sinon": "^6.0.0",
+    "sinon-chai": "^3.1.0"
+  },
+  "peerDependencies": {
+    "chai": "^4.1.2",
+    "sinon": ">5.1.0"
+  }
+}

@@ -1,0 +1,51 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run:
+          name: Install global packages
+          command: sudo npm install -g codecov greenkeeper-lockfile@1
+
+      - run:
+          name: Greenkeeper Lockfile
+          command: greenkeeper-lockfile-update
+
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+
+      - run:
+          name: Javascript Linter
+          command:
+            set -e
+            npm run lint
+
+      - run:
+          name: All Unit Tests with Code Coverage
+          command:
+            npm run test:coverage
+
+      - run:
+          name: Push any lockfile changes
+          command: greenkeeper-lockfile-upload
+
+      - run:
+          name: Send reports to codecov.io
+          command: codecov
