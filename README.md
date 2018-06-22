@@ -7,7 +7,7 @@ A collection of utilities to help with unit-testing [Sequelize](http://docs.sequ
 | Branch | Status | Coverage |   |
 | ------ | ------ | -------- | - |
 | `develop` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | Work in progress |
-| `master` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/master) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | Latest stable release |
+| `master` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/master) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) [![Greenkeeper badge](https://badges.greenkeeper.io/davesag/sequelize-test-helpers.svg)](https://greenkeeper.io/) | Latest stable release |
 
 ## Prerequisites
 
