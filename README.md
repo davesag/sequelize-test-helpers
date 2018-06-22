@@ -1,6 +1,6 @@
 # sequelize-test-helpers
 
-A collection of utilities to help with unit-testing [Sequelize](http://docs.sequelizejs.com) models
+A collection of utilities to help with unit-testing [Sequelize](http://docs.sequelizejs.com) models and code that needs those models.
 
 ## Branches
 
@@ -11,22 +11,24 @@ A collection of utilities to help with unit-testing [Sequelize](http://docs.sequ
 
 ## Prerequisites
 
-This library assumes
+This library assumes:
 
 1. You are using [`chai`](http://www.chaijs.com)
 2. You are using [`sinon`](http://sinonjs.org)
 
 ## Install
 
-Add this as a `devDependency`
+Add `sequelize-test-helpers` as a `devDependency`:
 
     npm i -D sequelize-test-helpers
 
-## Example
+## Examples
 
-let's say you have a Sequelize model `User` as follows
+### Unit Testing Models
 
-### `src/models/User.js`
+Let's say you have a Sequelize model `User` as follows:
+
+#### `src/models/User.js`
 
     const model = (sequelize, DataTypes) => {
       const User = sequelize.define(
@@ -80,9 +82,9 @@ let's say you have a Sequelize model `User` as follows
 
     module.exports = model
 
-You an use `sequelize-test-helpers` to unit-test this as follows
+You can use `sequelize-test-helpers` to unit-test this as follows:
 
-### `test/unit/models/User.spec.js`
+#### `test/unit/models/User.spec.js`
 
     const { expect } = require('chai')
 
@@ -128,7 +130,7 @@ You an use `sequelize-test-helpers` to unit-test this as follows
       })
     })
 
-## Built in checks
+### Built in checks
 
 | Check                      | What it does |
 | -------------------------- | ------------ |
@@ -139,11 +141,11 @@ You an use `sequelize-test-helpers` to unit-test this as follows
 | `checkUniqueCompoundIndex` | Checks that a specific unique compound index is defined. |
 | `checkUniqueIndex`         | Checks that a specific unique index is defined. |
 
-## Checking associations
+### Checking associations
 
 The various association functions are stubbed so you can simply invoke the the model's `associate` function in a `before` block then use `sinon`'s standard expectation syntax to check they were called with the correct values.
 
-### `hasOne`
+#### `hasOne`
 
     it("defined a hasOne association with Image as 'profilePic'", () => {
       expect(User.hasOne).to.have.been.calledWith(Image, {
@@ -151,13 +153,13 @@ The various association functions are stubbed so you can simply invoke the the m
       })
     })
 
-### `belongsTo`
+#### `belongsTo`
 
     it('defined a belongsTo association with Company', () => {
       expect(User.belongsTo).to.have.been.calledWith(Company)
     })
 
-### `hasMany`
+#### `hasMany`
 
     it("defined a hasMany association with User as 'employees'", () => {
       expect(Company.hasMany).to.have.been.calledWith(User, {
@@ -165,7 +167,7 @@ The various association functions are stubbed so you can simply invoke the the m
       })
     })
 
-### `belongsToMany`
+#### `belongsToMany`
 
     it("defined a belongsToMany association with Category through CategoriesCompanies as 'categories'", () => {
       expect(Company.belongsToMany).to.have.been.calledWith(Category, {
@@ -173,6 +175,101 @@ The various association functions are stubbed so you can simply invoke the the m
         as: 'categories'
       })
     })
+
+### Unit testing code that requires `models`
+
+Let's say you have a utility function that takes some data and uses it to update a user record. If the user does not exist it returns `null`. (Yes I know this is a contrived example)
+
+#### `src/utils/save.js`
+
+    const { User } = require('../models')
+
+    const save = async ({ id, ...data }) => {
+      const user = await User.findOne({ where: { id } })
+      if (user) return await user.update(data)
+      return null
+    }
+
+    module.exports = save
+
+You want to unit-test this without invoking a database connection (so you can't `require('src/models')` in your test).
+
+This is where `makeMockModels`, `sinon`, and [`proxyquire`](https://github.com/thlorenz/proxyquire) come in handy.
+
+#### `test/unit/utils/save.spec.js`
+
+    const { expect } = require('chai')
+    const sinon = require('sinon')
+    const proxyquire = require('proxyquire')
+
+    const { makeMockModels } = require('sequelize-test-helpers')
+
+    const mockModels = makeMockModels({ User: { findOne: sinon.stub() } })
+
+    const save = proxyquire('../../../src/utils/save', { '../models': mockModels })
+
+    const fakeUser = { update: sinon.stub() }
+
+    describe('src/save', () => {
+      const data = {
+        firstname: 'Testy',
+        lastname: 'McTestface',
+        email: 'testy.mctestface.test.tes',
+        token: 'some-token'
+      }
+
+      const resetStubs = () => {
+        mockModels.User.findOne.resetHistory()
+        fakeUser.update.resetHistory()
+      }
+
+      let result
+
+      context('user does not exist', () => {
+        before(async () => {
+          mockModels.User.findOne.resolves(undefined)
+          result = await save(data)
+        })
+
+        after(resetStubs)
+
+        it('called User.findOne', () => {
+          expect(mockModels.User.findOne).to.have.been.called
+        })
+
+        it("didn't call user.update", () => {
+          expect(fakeUser.update).not.to.have.been.called
+        })
+
+        it('returned null', () => {
+          expect(result).to.be.null
+        })
+      })
+
+      context('user exists', () => {
+        before(async () => {
+          fakeUser.update.resolves(fakeUser)
+          mockModels.User.findOne.resolves(fakeUser)
+          result = await save(data)
+        })
+
+        after(resetStubs)
+
+        it('called User.findOne', () => {
+          expect(mockModels.User.findOne).to.have.been.called
+        })
+
+        it('called user.update', () => {
+          expect(fakeUser.update).to.have.been.calledWith(sinon.match(data))
+        })
+
+        it('returned the user', () => {
+          expect(result).to.deep.equal(fakeUser)
+        })
+      })
+    })
+
+As a convenience, `makeMockModels` will automatically populate your `mockModels` with mocks of all of the models defined in your `src/models` folder (or if you have a `.sequelizerc` file it will look for the `model-path` in that). Simply override any of the specific models you need to do stuff with.
 
 ## Contributing
 

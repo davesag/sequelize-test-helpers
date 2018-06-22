@@ -6,9 +6,11 @@ module.exports = {
   },
   env: {
     es6: true,
-    node: true
+    node: true,
+    mocha: true
   },
   rules: {
-    'prettier/prettier': ['error', { singleQuote: true, semi: false }]
+    'prettier/prettier': ['error', { singleQuote: true, semi: false }],
+    'no-unused-expressions': 0,
   }
 }
