@@ -26,19 +26,22 @@ const listToObject = (acc, elem) => {
   return acc
 }
 
-const finder = folder =>
+/* istanbul ignore next */
+const listModels = (folder = modelsFolder) =>
   fs
     .readdirSync(folder)
     .filter(fileFilter)
     .map(makeName)
-    .reduce(listToObject, {})
 
-/* istanbul ignore next */
+const finder = folder => listModels(folder).reduce(listToObject, {})
 
-const makeMockModels = (models = {}, folder = modelsFolder) => ({
+const makeMockModels = (models, folder) => ({
   ...finder(folder),
   ...models,
   '@noCallThru': true
 })
 
-module.exports = makeMockModels
+module.exports = {
+  makeMockModels,
+  listModels
+}

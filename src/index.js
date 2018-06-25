@@ -6,7 +6,7 @@ const checkUniqueCompoundIndex = require('./checkUniqueCompoundIndex')
 const checkUniqueIndex = require('./checkUniqueIndex')
 const dataTypes = require('./dataTypes')
 const sequelize = require('./sequelize')
-const makeMockModels = require('./makeMockModels')
+const { makeMockModels, listModels } = require('./mockModels')
 
 module.exports = {
   checkHookDefined,
@@ -16,6 +16,7 @@ module.exports = {
   checkUniqueCompoundIndex,
   checkUniqueIndex,
   dataTypes,
+  listModels,
   makeMockModels,
   sequelize
 }
