@@ -36,6 +36,9 @@ Let's say you have a Sequelize model `User` as follows:
       const User = sequelize.define(
         'User',
         {
+          age: {
+            type: DataTypes.INTEGER.UNSIGNED
+          },
           firstname: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -108,6 +111,7 @@ You can use `sequelize-test-helpers` to unit-test this as follows:
 
       context('properties', () => {
         ;[
+          'age',
           'firstname',
           'lastname',
           'email',
