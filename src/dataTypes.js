@@ -1,28 +1,34 @@
 /* istanbul ignore next  */
 const noop = () => {}
 
+function NumericType() {
+  return NumericType
+}
+
+NumericType.UNSIGNED = NumericType
+NumericType.ZEROFILL = NumericType
+
+function StringType() {
+  return StringType
+}
+
+StringType.BINARY = StringType
+
 // see http://docs.sequelizejs.com/variable/index.html#static-variable-DataTypes
-const types = [
+const basicTypes = [
   'ABSTRACT',
   'ARRAY',
-  'BIGINT',
   'BLOB',
   'BOOLEAN',
-  'CHAR',
   'CIDR',
   'DATE',
   'DATEONLY',
-  'DECIMAL',
-  'DOUBLE',
-  'DOUBLE PRECISION',
   'ENUM',
-  'FLOAT',
   'GEOGRAPHY',
   'GEOMETRY',
   'HSTORE',
   'HSTORE',
   'INET',
-  'INTEGER',
   'JSON',
   'JSONB',
   'JSONTYPE',
@@ -32,22 +38,42 @@ const types = [
   'NUMBER',
   'NUMERIC',
   'RANGE',
-  'REAL',
-  'SMALLINT',
-  'STRING',
   'TEXT',
   'TIME',
-  'TINYINT',
   'UUID',
   'UUIDV1',
   'UUIDV4',
   'VIRTUAL'
 ]
 
-const dataTypes = types.reduce((acc, elem) => {
+const numericTypes = [
+  'BIGINT',
+  'DECIMAL',
+  'DOUBLE',
+  'DOUBLE PRECISION',
+  'FLOAT',
+  'INTEGER',
+  'REAL',
+  'SMALLINT',
+  'TINYINT'
+]
+
+const stringTypes = ['CHAR', 'STRING']
+
+const basicDataTypes = basicTypes.reduce((acc, elem) => {
   acc[elem] = noop
   return acc
 }, {})
+
+const numericDataTypes = numericTypes.reduce((acc, elem) => {
+  acc[elem] = NumericType
+  return acc
+}, basicDataTypes)
+
+const dataTypes = stringTypes.reduce((acc, elem) => {
+  acc[elem] = StringType
+  return acc
+}, numericDataTypes)
 
 const deferrables = [
   'INITIALLY_IMMEDIATE',
