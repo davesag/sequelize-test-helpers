@@ -5,8 +5,8 @@
   "author": "Dave Sag <davesag@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": "10.5.0",
-    "npm": "6.1.0"
+    "node": "10.8.0",
+    "npm": "6.2.0"
   },
   "main": "src/index.js",
   "scripts": {
