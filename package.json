@@ -1,14 +1,16 @@
 {
   "name": "sequelize-test-helpers",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A collection of utilities to help with unit-testing sequelize models",
   "author": "Dave Sag <davesag@gmail.com>",
   "license": "MIT",
   "main": "src/index.js",
+  "engines": {
+    "node": ">8.12.0"
+  },
   "scripts": {
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "lint": "eslint .",
-    "precommit": "lint-staged",
     "prettier": "prettier --single-quote --no-semi --write '**/*.{js,json}'",
     "test": "find ./test/unit -name '*spec.js' | NODE_ENV=test xargs mocha --require ./test/unit/test_helper.js",
     "test:coverage": "find ./test/unit -name '*spec.js' | NODE_ENV=test xargs nyc mocha --require ./test/unit/test_helper.js"
@@ -54,29 +56,34 @@
   },
   "homepage": "https://github.com/davesag/sequelize-test-helpers#readme",
   "devDependencies": {
-    "ajv": "^6.5.3",
-    "chai": "^4.1.2",
+    "ajv": "^6.5.4",
+    "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "eslint": "^5.4.0",
-    "eslint-config-prettier": "^3.0.1",
+    "eslint": "^5.6.1",
+    "eslint-config-prettier": "^3.1.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-mocha": "^5.2.0",
     "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-prettier": "^2.6.2",
-    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.2.2",
+    "husky": "^1.1.1",
+    "lint-staged": "^7.3.0",
     "mocha": "^5.2.0",
     "nyc": "^13.0.1",
-    "prettier": "^1.14.2",
+    "prettier": "^1.14.3",
     "proxyquire": "^2.1.0",
-    "sinon": "^6.1.5",
+    "sinon": "^6.3.5",
     "sinon-chai": "^3.1.0"
   },
   "peerDependencies": {
-    "chai": "^4.1.2",
-    "sinon": ">5.1.0"
+    "chai": ">4",
+    "sinon": ">6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
