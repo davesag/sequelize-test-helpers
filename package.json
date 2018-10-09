@@ -1,6 +1,6 @@
 {
   "name": "sequelize-test-helpers",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A collection of utilities to help with unit-testing sequelize models",
   "author": "Dave Sag <davesag@gmail.com>",
   "license": "MIT",
