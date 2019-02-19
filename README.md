@@ -11,18 +11,22 @@ A collection of utilities to help with unit-testing [Sequelize](http://docs.sequ
 | `develop` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | Work in progress |
 | `master` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/master) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | Latest stable release |
 
+[![NPM](https://nodei.co/npm/sequelize-test-helpers.png)](https://nodei.co/npm/sequelize-test-helpers/)
+
 ## Related Projects
 
 * [`sequelize-pg-utilities`](https://github.com/davesag/sequelize-pg-utilities) — Simple utilities that help you manage your Sequelize configuration.
 
-## Prerequisites
+## How to use
+
+### Prerequisites
 
 This library assumes:
 
 1. You are using [`chai`](http://www.chaijs.com) — Version 4 or better.
 2. You are using [`sinon`](http://sinonjs.org) — Version 5 or better.
 
-## Install
+### Installation
 
 Add `sequelize-test-helpers` as a `devDependency`:
 
@@ -224,16 +228,16 @@ This is where `makeMockModels`, `sinon`, and [`proxyquire`](https://github.com/t
 
 ```
 const { expect } = require('chai')
-const sinon = require('sinon')
+const { match, stub } = require('sinon')
 const proxyquire = require('proxyquire')
 
 const { makeMockModels } = require('sequelize-test-helpers')
 
-const mockModels = makeMockModels({ User: { findOne: sinon.stub() } })
+const mockModels = makeMockModels({ User: { findOne: stub() } })
 
 const save = proxyquire('../../../src/utils/save', { '../models': mockModels })
 
-const fakeUser = { update: sinon.stub() }
+const fakeUser = { update: stub() }
 
 describe('src/save', () => {
   const data = {
@@ -285,7 +289,7 @@ describe('src/save', () => {
     })
 
     it('called user.update', () => {
-      expect(fakeUser.update).to.have.been.calledWith(sinon.match(data))
+      expect(fakeUser.update).to.have.been.calledWith(match(data))
     })
 
     it('returned the user', () => {
