@@ -1,6 +1,6 @@
 {
   "name": "sequelize-test-helpers",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A collection of utilities to help with unit-testing sequelize models",
   "author": "Dave Sag <davesag@gmail.com>",
   "license": "MIT",
@@ -16,7 +16,7 @@
   "scripts": {
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "lint": "eslint .",
-    "prettier": "prettier --single-quote --no-semi --write '**/*.{js,json}'",
+    "prettier": "prettier --write '**/*.{js,json,md}'",
     "test": "find ./test/unit -name '*spec.js' | NODE_ENV=test xargs mocha --require ./test/unit/test_helper.js",
     "test:coverage": "find ./test/unit -name '*spec.js' | NODE_ENV=test xargs nyc mocha --require ./test/unit/test_helper.js"
   },
@@ -24,6 +24,10 @@
     "type": "git",
     "url": "git+https://github.com/davesag/sequelize-test-helpers.git"
   },
+  "bugs": {
+    "url": "https://github.com/davesag/sequelize-test-helpers/issues"
+  },
+  "homepage": "https://github.com/davesag/sequelize-test-helpers#readme",
   "keywords": [
     "sequelize",
     "mock",
@@ -33,9 +37,40 @@
     "sinon",
     "chai"
   ],
+  "devDependencies": {
+    "ajv": "^6.10.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-mocha": "^5.3.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "mocha": "^6.1.1",
+    "nyc": "^13.3.0",
+    "prettier": "^1.16.4",
+    "proxyquire": "^2.1.0",
+    "sinon": "^7.3.1",
+    "sinon-chai": "^3.3.0"
+  },
+  "peerDependencies": {
+    "chai": ">= 4",
+    "sinon": ">= 5"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "proseWrap": "never"
+  },
   "lint-staged": {
-    "**/*.{js,json}": [
-      "prettier --single-quote --no-semi --write",
+    "**/*.{js,json,md}": [
+      "prettier --write",
       "git add"
     ]
   },
@@ -58,36 +93,6 @@
     ],
     "all": true,
     "cache": true
-  },
-  "bugs": {
-    "url": "https://github.com/davesag/sequelize-test-helpers/issues"
-  },
-  "homepage": "https://github.com/davesag/sequelize-test-helpers#readme",
-  "devDependencies": {
-    "ajv": "^6.9.1",
-    "chai": "^4.2.0",
-    "chai-as-promised": "^7.1.1",
-    "eslint": "^5.14.1",
-    "eslint-config-prettier": "^4.0.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-mocha": "^5.3.0",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "husky": "^1.3.1",
-    "lint-staged": "^8.1.4",
-    "mocha": "^6.0.0",
-    "nyc": "^13.3.0",
-    "prettier": "^1.16.4",
-    "proxyquire": "^2.1.0",
-    "sinon": "^7.2.4",
-    "sinon-chai": "^3.3.0"
-  },
-  "peerDependencies": {
-    "chai": ">= 4",
-    "sinon": ">= 5"
   },
   "husky": {
     "hooks": {

@@ -6,6 +6,7 @@ A collection of utilities to help with unit-testing [Sequelize](http://docs.sequ
 
 ## Branches
 
+<!-- prettier-ignore -->
 | Branch | Status | Coverage |   |
 | ------ | ------ | -------- | - |
 | `develop` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | Work in progress |
@@ -15,7 +16,7 @@ A collection of utilities to help with unit-testing [Sequelize](http://docs.sequ
 
 ## Related Projects
 
-* [`sequelize-pg-utilities`](https://github.com/davesag/sequelize-pg-utilities) — Simple utilities that help you manage your Sequelize configuration.
+- [`sequelize-pg-utilities`](https://github.com/davesag/sequelize-pg-utilities) — Simple utilities that help you manage your Sequelize configuration.
 
 ## How to use
 
@@ -30,7 +31,9 @@ This library assumes:
 
 Add `sequelize-test-helpers` as a `devDependency`:
 
-    npm i -D sequelize-test-helpers
+```
+npm i -D sequelize-test-helpers
+```
 
 ## Examples
 
@@ -150,14 +153,15 @@ describe('src/models/User', () => {
 
 ### Built in checks
 
-| Check                      | What it does                                             |
-| -------------------------- | -------------------------------------------------------- |
-| `checkHookDefined`         | Checks that a particular hook is defined.                |
-| `checkModelName`           | Checks that the model is named correctly.                |
-| `checkNonUniqueIndex`      | Checks that a specific non-unique index is defined.      |
-| `checkPropertyExists`      | Checks that the model has defined the given property.    |
+<!-- prettier-ignore -->
+| Check                 | What it does |
+| --------------------- | ------------ |
+| `checkHookDefined`    | Checks that a particular hook is defined. |
+| `checkModelName`      | Checks that the model is named correctly. |
+| `checkNonUniqueIndex` | Checks that a specific non-unique index is defined. |
+| `checkPropertyExists` | Checks that the model has defined the given property. |
 | `checkUniqueCompoundIndex` | Checks that a specific unique compound index is defined. |
-| `checkUniqueIndex`         | Checks that a specific unique index is defined.          |
+| `checkUniqueIndex`    | Checks that a specific unique index is defined. |
 
 ### Checking associations
 
