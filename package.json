@@ -1,6 +1,6 @@
 {
   "name": "sequelize-test-helpers",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A collection of utilities to help with unit-testing sequelize models",
   "author": "Dave Sag <davesag@gmail.com>",
   "license": "MIT",
@@ -16,7 +16,7 @@
   "scripts": {
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "lint": "eslint .",
-    "prettier": "prettier --single-quote --no-semi --write '**/*.{js,json}'",
+    "prettier": "prettier --write '**/*.{js,json,md}'",
     "test": "find ./test/unit -name '*spec.js' | NODE_ENV=test xargs mocha --require ./test/unit/test_helper.js",
     "test:coverage": "find ./test/unit -name '*spec.js' | NODE_ENV=test xargs nyc mocha --require ./test/unit/test_helper.js"
   },
@@ -24,6 +24,10 @@
     "type": "git",
     "url": "git+https://github.com/davesag/sequelize-test-helpers.git"
   },
+  "bugs": {
+    "url": "https://github.com/davesag/sequelize-test-helpers/issues"
+  },
+  "homepage": "https://github.com/davesag/sequelize-test-helpers#readme",
   "keywords": [
     "sequelize",
     "mock",
@@ -33,36 +37,6 @@
     "sinon",
     "chai"
   ],
-  "lint-staged": {
-    "**/*.{js,json}": [
-      "prettier --single-quote --no-semi --write",
-      "git add"
-    ]
-  },
-  "nyc": {
-    "check-coverage": true,
-    "per-file": true,
-    "lines": 100,
-    "statements": 100,
-    "functions": 100,
-    "branches": 100,
-    "include": [
-      "src/**/*.js"
-    ],
-    "exclude": [
-      "index.js"
-    ],
-    "reporter": [
-      "lcov",
-      "text"
-    ],
-    "all": true,
-    "cache": true
-  },
-  "bugs": {
-    "url": "https://github.com/davesag/sequelize-test-helpers/issues"
-  },
-  "homepage": "https://github.com/davesag/sequelize-test-helpers#readme",
   "devDependencies": {
     "ajv": "^6.10.0",
     "chai": "^4.2.0",
@@ -88,6 +62,37 @@
   "peerDependencies": {
     "chai": ">= 4",
     "sinon": ">= 5"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "proseWrap": "never"
+  },
+  "lint-staged": {
+    "**/*.{js,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 100,
+    "statements": 100,
+    "functions": 100,
+    "branches": 100,
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "index.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "all": true,
+    "cache": true
   },
   "husky": {
     "hooks": {
