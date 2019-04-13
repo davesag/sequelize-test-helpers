@@ -31,7 +31,7 @@ This library assumes:
 
 Add `sequelize-test-helpers` as a `devDependency`:
 
-```
+```sh
 npm i -D sequelize-test-helpers
 ```
 
@@ -43,7 +43,7 @@ Let's say you have a Sequelize model `User` as follows:
 
 #### `src/models/User.js`
 
-```
+```js
 const model = (sequelize, DataTypes) => {
   const User = sequelize.define(
     'User',
@@ -104,7 +104,7 @@ You can use `sequelize-test-helpers` to unit-test this as follows:
 
 #### `test/unit/models/User.spec.js`
 
-```
+```js
 const { expect } = require('chai')
 
 const {
@@ -124,13 +124,9 @@ describe('src/models/User', () => {
   checkModelName(User)('User')
 
   context('properties', () => {
-    ;[
-      'age',
-      'firstname',
-      'lastname',
-      'email',
-      'token'
-    ].forEach(checkPropertyExists(user))
+    ;['age', 'firstname', 'lastname', 'email', 'token'].forEach(
+      checkPropertyExists(user)
+    )
   })
 
   context('associations', () => {
@@ -169,7 +165,7 @@ The various association functions are stubbed so you can simply invoke the the m
 
 #### `hasOne`
 
-```
+```js
 it("defined a hasOne association with Image as 'profilePic'", () => {
   expect(User.hasOne).to.have.been.calledWith(Image, {
     as: 'profilePic'
@@ -179,7 +175,7 @@ it("defined a hasOne association with Image as 'profilePic'", () => {
 
 #### `belongsTo`
 
-```
+```js
 it('defined a belongsTo association with Company', () => {
   expect(User.belongsTo).to.have.been.calledWith(Company)
 })
@@ -187,7 +183,7 @@ it('defined a belongsTo association with Company', () => {
 
 #### `hasMany`
 
-```
+```js
 it("defined a hasMany association with User as 'employees'", () => {
   expect(Company.hasMany).to.have.been.calledWith(User, {
     as: 'employees'
@@ -197,7 +193,7 @@ it("defined a hasMany association with User as 'employees'", () => {
 
 #### `belongsToMany`
 
-```
+```js
 it("defined a belongsToMany association with Category through CategoriesCompanies as 'categories'", () => {
   expect(Company.belongsToMany).to.have.been.calledWith(Category, {
     through: CategoriesCompanies,
@@ -212,7 +208,7 @@ Let's say you have a utility function that takes some data and uses it to update
 
 #### `src/utils/save.js`
 
-```
+```js
 const { User } = require('../models')
 
 const save = async ({ id, ...data }) => {
@@ -230,7 +226,7 @@ This is where `makeMockModels`, `sinon`, and [`proxyquire`](https://github.com/t
 
 #### `test/unit/utils/save.spec.js`
 
-```
+```js
 const { expect } = require('chai')
 const { match, stub } = require('sinon')
 const proxyquire = require('proxyquire')
@@ -309,7 +305,7 @@ As a convenience, `makeMockModels` will automatically populate your `mockModels`
 
 It's useful to be able to generate a list of the names of your models.
 
-```
+```js
 const { listModels } = require('sequelize-test-helpers')
 
 console.log(listModels()) // will spit out a list of your model names.
