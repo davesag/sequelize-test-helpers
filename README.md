@@ -149,15 +149,14 @@ describe('src/models/User', () => {
 
 ### Built in checks
 
-<!-- prettier-ignore -->
-| Check                 | What it does |
-| --------------------- | ------------ |
-| `checkHookDefined`    | Checks that a particular hook is defined. |
-| `checkModelName`      | Checks that the model is named correctly. |
+| Check | What it does |
+| --- | --- |
+| `checkHookDefined` | Checks that a particular hook is defined. |
+| `checkModelName` | Checks that the model is named correctly. |
 | `checkNonUniqueIndex` | Checks that a specific non-unique index is defined. |
 | `checkPropertyExists` | Checks that the model has defined the given property. |
 | `checkUniqueCompoundIndex` | Checks that a specific unique compound index is defined. |
-| `checkUniqueIndex`    | Checks that a specific unique index is defined. |
+| `checkUniqueIndex` | Checks that a specific unique index is defined. |
 
 ### Checking associations
 
