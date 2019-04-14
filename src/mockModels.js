@@ -1,6 +1,8 @@
 const fs = require('fs')
 const path = require('path')
 
+const fileFilter = require('./utils/fileFilter')
+
 const projectRoot = process.cwd()
 
 let sequelizerc
@@ -15,9 +17,6 @@ try {
 const modelsFolder = sequelizerc
   ? /* istanbul ignore next */ sequelizerc['models-path']
   : path.join(projectRoot, 'src', 'models')
-
-const fileFilter = file =>
-  file.indexOf('.') !== 0 && file !== 'index.js' && file.slice(-3) === '.js'
 
 const makeName = file => file.slice(0, -3)
 

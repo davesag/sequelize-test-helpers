@@ -33,14 +33,15 @@ jobs:
 
       - run:
           name: Javascript Linter
-          command:
-            set -e
-            npm run lint
+          command: npm run lint
 
       - run:
           name: All Unit Tests with Code Coverage
-          command:
-            npm run test:coverage
+          command: npm run test:coverage
+
+      - run:
+          name: Mutation Tests
+          command: npm run test:mutants
 
       - run:
           name: Push any lockfile changes

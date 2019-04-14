@@ -1,6 +1,8 @@
+// includes mocha plugins and env here because the code is
+// designed to run in a mocha context
 module.exports = {
   extends: ['standard', 'prettier', 'prettier/standard'],
-  plugins: ['prettier', 'standard', 'mocha'],
+  plugins: ['prettier', 'standard', 'import', 'promise', 'mocha'],
   parserOptions: {
     sourceType: 'module'
   },
@@ -11,6 +13,6 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': ['error', { singleQuote: true, semi: false }],
-    'no-unused-expressions': 0,
+    'no-unused-expressions': 0
   }
 }
