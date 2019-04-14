@@ -1,51 +1,5 @@
 const sinon = require('sinon')
-
-// see https://github.com/sequelize/sequelize/blob/master/lib/hooks.js#L7
-const hooks = [
-  'beforeValidate',
-  'afterValidate',
-  'validationFailed',
-  'beforeCreate',
-  'afterCreate',
-  'beforeDestroy',
-  'afterDestroy',
-  'beforeRestore',
-  'afterRestore',
-  'beforeUpdate',
-  'afterUpdate',
-  'beforeSave',
-  'afterSave',
-  'beforeUpsert',
-  'afterUpsert',
-  'beforeBulkCreate',
-  'afterBulkCreate',
-  'beforeBulkDestroy',
-  'afterBulkDestroy',
-  'beforeBulkRestore',
-  'afterBulkRestore',
-  'beforeBulkUpdate',
-  'afterBulkUpdate',
-  'beforeFind',
-  'beforeFindAfterExpandIncludeAll',
-  'beforeFindAfterOptions',
-  'afterFind',
-  'beforeCount',
-  'beforeDefine',
-  'afterDefine',
-  'beforeInit',
-  'afterInit',
-  'beforeConnect',
-  'afterConnect',
-  'beforeSync',
-  'afterSync',
-  'beforeBulkSync',
-  'afterBulkSync',
-  'beforeDelete',
-  'afterDelete',
-  'beforeBukDelete',
-  'afterBulkDelete',
-  'beforeConnection'
-]
+const hooks = require('./constants/hooks')
 
 const sequelize = {
   define: (modelName, modelDefn, metaData = {}) => {
