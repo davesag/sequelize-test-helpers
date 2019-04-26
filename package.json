@@ -18,9 +18,8 @@
     "lint": "eslint .",
     "prettier": "prettier --write '**/*.{js,json,md}'",
     "test": "npm run test:unit",
-    "test:unit": "NODE_ENV=test mocha --require ./test/unit/testHelper.js --spec ./test/unit/**/*.test.js",
-    "test:unit:cov-x": "NODE_ENV=test nyc mocha --require ./test/unit/testHelper.js --spec ./test/unit/**/*.test.js",
-    "test:unit:cov": "find ./test/unit -name '*.test.js' | NODE_ENV=test xargs nyc mocha --require ./test/unit/testHelper.js",
+    "test:unit": "NODE_ENV=test mocha ./test/unit/ --require ./test/unit/testHelper.js --recursive --extension .test.js",
+    "test:unit:cov": "NODE_ENV=test nyc mocha ./test/unit/ --require ./test/unit/testHelper.js --recursive --extension .test.js",
     "test:mutants": "NODE_ENV=test npx stryker run"
   },
   "repository": {
