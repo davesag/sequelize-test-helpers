@@ -11,7 +11,8 @@
   "files": [
     "/package*.json",
     "/CONTRIBUTING.md",
-    "/src"
+    "/src",
+    "/logo/horizontal.svg"
   ],
   "scripts": {
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
