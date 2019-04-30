@@ -1,4 +1,4 @@
-# sequelize-test-helpers
+![Horizontal Logo](logo/horizontal.svg)
 
 A collection of utilities to help with unit-testing [Sequelize](http://docs.sequelizejs.com) models and code that needs those models.
 
@@ -339,3 +339,7 @@ npm run lint
 ## Contributing
 
 Please see the [contributing notes](CONTRIBUTING.md).
+
+## Thanks
+
+- Thanks to [`reallinfo`](https://github.com/reallinfo) for the logo.
