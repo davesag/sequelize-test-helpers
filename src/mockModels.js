@@ -6,12 +6,13 @@ const fileFilter = require('./utils/fileFilter')
 const projectRoot = process.cwd()
 
 let sequelizerc
+const sequelizercPath = path.join(projectRoot, '.sequelizerc')
 
 try {
-  sequelizerc = require(path.join(projectRoot, '.sequelizerc'))
+  sequelizerc = require(sequelizercPath)
 } catch (err) {
   /* istanbul ignore next */
-  if (!err.message.startsWith('Cannot find module')) throw err
+  if (!err.code === 'MODULE_NOT_FOUND') throw err
 }
 
 const modelsFolder = sequelizerc
