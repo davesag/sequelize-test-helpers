@@ -1,6 +1,6 @@
 {
   "name": "sequelize-test-helpers",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A collection of utilities to help with unit-testing sequelize models",
   "author": "Dave Sag <davesag@gmail.com>",
   "license": "MIT",
@@ -11,15 +11,17 @@
   "files": [
     "/package*.json",
     "/CONTRIBUTING.md",
-    "/src"
+    "/src",
+    "/logo/horizontal.svg"
   ],
   "scripts": {
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "lint": "eslint .",
     "prettier": "prettier --write '**/*.{js,json,md}'",
-    "test": "find ./test/unit -name '*.test.js' | NODE_ENV=test xargs mocha --require ./test/unit/testHelper.js",
-    "test:coverage": "find ./test/unit -name '*.test.js' | NODE_ENV=test xargs nyc mocha --require ./test/unit/testHelper.js",
-    "test:mutants": "NODE_ENV=test NODE_PATH=. npx stryker run"
+    "test": "npm run test:unit",
+    "test:unit": "NODE_ENV=test mocha ./test/unit/ --require ./test/unitTestHelper.js --recursive",
+    "test:unit:cov": "NODE_ENV=test nyc mocha ./test/unit/ --require ./test/unitTestHelper.js --recursive",
+    "test:mutants": "NODE_ENV=test npx stryker run"
   },
   "repository": {
     "type": "git",
@@ -39,29 +41,29 @@
     "chai"
   ],
   "devDependencies": {
-    "@stryker-mutator/core": "^1.2.0",
-    "@stryker-mutator/javascript-mutator": "^1.2.0",
-    "@stryker-mutator/mocha-framework": "^1.2.0",
-    "@stryker-mutator/mocha-runner": "^1.2.0",
+    "@stryker-mutator/core": "^1.3.1",
+    "@stryker-mutator/javascript-mutator": "^1.3.1",
+    "@stryker-mutator/mocha-framework": "^1.3.1",
+    "@stryker-mutator/mocha-runner": "^1.3.1",
     "ajv": "^6.10.0",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-prettier": "^4.3.0",
     "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.17.1",
+    "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-mocha": "^5.3.0",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
-    "husky": "^1.3.1",
-    "lint-staged": "^8.1.5",
-    "mocha": "^6.1.3",
-    "nyc": "^13.3.0",
-    "prettier": "^1.17.0",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
+    "prettier": "^1.17.1",
     "proxyquire": "^2.1.0",
-    "sinon": "^7.3.1",
+    "sinon": "^7.3.2",
     "sinon-chai": "^3.3.0"
   },
   "peerDependencies": {

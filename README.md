@@ -1,4 +1,4 @@
-# sequelize-test-helpers
+![Horizontal Logo](logo/horizontal.svg)
 
 A collection of utilities to help with unit-testing [Sequelize](http://docs.sequelizejs.com) models and code that needs those models.
 
@@ -312,6 +312,34 @@ console.log(listModels()) // will spit out a list of your model names.
 
 Similarly to `makeMockModels` above, `listModels` will find all of the models defined in your `src/models` folder (or if you have a `.sequelizerc` file it will look for the `model-path` in that).
 
+## Development
+
+### Prerequisites
+
+- [NodeJS](htps://nodejs.org), version 8.10.0 or better (I use [`nvm`](https://github.com/creationix/nvm) to manage Node versions — `brew install nvm`.)
+
+### Initialisation
+
+```sh
+npm install
+```
+
+### Test it
+
+- `npm test` — runs the unit tests
+- `npm run test:unit:cov` — runs the unit tests with code coverage
+- `npm run test:mutants` — runs the mutation tests
+
+### Lint it
+
+```sh
+npm run lint
+```
+
 ## Contributing
 
 Please see the [contributing notes](CONTRIBUTING.md).
+
+## Thanks
+
+- Thanks to [`reallinfo`](https://github.com/reallinfo) for the logo.
