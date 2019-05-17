@@ -43,7 +43,7 @@
   "devDependencies": {
     "@stryker-mutator/core": "^1.3.1",
     "@stryker-mutator/javascript-mutator": "^1.3.1",
-    "@stryker-mutator/mocha-framework": "^1.3.1",
+    "@stryker-mutator/mocha-framework": "^2.0.0",
     "@stryker-mutator/mocha-runner": "^1.3.1",
     "ajv": "^6.10.0",
     "chai": "^4.2.0",
