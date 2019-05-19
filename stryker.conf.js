@@ -1,5 +1,6 @@
 module.exports = function(config) {
   config.set({
+    maxConcurrentTestRunners: 2, // stops it crapping out on CI
     mutate: ['src/**/*.js', '!src/checks/check*.js', '!src/mockModels.js'],
     mutator: 'javascript',
     packageManager: 'npm',
