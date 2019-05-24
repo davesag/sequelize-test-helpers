@@ -1,12 +1,11 @@
 const fs = require('fs')
 const path = require('path')
-
 const fileFilter = require('./utils/fileFilter')
 
-const projectRoot = process.cwd()
+const PROJECT_ROOT = process.cwd()
 
 let sequelizerc
-const sequelizercPath = path.join(projectRoot, '.sequelizerc')
+const sequelizercPath = path.join(PROJECT_ROOT, '.sequelizerc')
 
 try {
   sequelizerc = require(sequelizercPath)
@@ -15,28 +14,33 @@ try {
   if (!err.code === 'MODULE_NOT_FOUND') throw err
 }
 
-const modelsFolder = sequelizerc
+const DEFAULT_SUFFIX = '.js'
+const DEFAULT_MODELS_FOLDER = sequelizerc
   ? /* istanbul ignore next */ sequelizerc['models-path']
-  : path.join(projectRoot, 'src', 'models')
+  : path.join(PROJECT_ROOT, 'src', 'models')
 
-const makeName = file => file.slice(0, -3)
+const makeName = suffix => file => file.slice(0, -suffix.length)
 
 const listToObject = (acc, elem) => {
   acc[elem] = elem
   return acc
 }
 
-/* istanbul ignore next */
-const listModels = (folder = modelsFolder) =>
+//
+const listModels = (
+  /* istanbul ignore next */ folder = DEFAULT_MODELS_FOLDER,
+  suffix = DEFAULT_SUFFIX
+) =>
   fs
     .readdirSync(folder)
-    .filter(fileFilter)
-    .map(makeName)
+    .filter(fileFilter(suffix))
+    .map(makeName(suffix))
 
-const finder = folder => listModels(folder).reduce(listToObject, {})
+const finder = (folder, suffix) =>
+  listModels(folder, suffix).reduce(listToObject, {})
 
-const makeMockModels = (models, folder) => ({
-  ...finder(folder),
+const makeMockModels = (models, folder, suffix) => ({
+  ...finder(folder, suffix),
   ...models,
   '@noCallThru': true
 })

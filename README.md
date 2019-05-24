@@ -223,46 +223,44 @@ You want to unit-test this without invoking a database connection (so you can't 
 
 This is where `makeMockModels`, `sinon`, and [`proxyquire`](https://github.com/thlorenz/proxyquire) come in handy.
 
-#### `test/unit/utils/save.spec.js`
+#### `test/unit/utils/save.test.js`
 
 ```js
 const { expect } = require('chai')
-const { match, stub } = require('sinon')
+const { match, stub, resetHistory } = require('sinon')
 const proxyquire = require('proxyquire')
 
 const { makeMockModels } = require('sequelize-test-helpers')
 
-const mockModels = makeMockModels({ User: { findOne: stub() } })
+describe('src/utils/save', () => {
+  const User = { findOne: stub() }
+  const mockModels = makeMockModels({ User })
 
-const save = proxyquire('../../../src/utils/save', { '../models': mockModels })
+  const save = proxyquire('../../../src/utils/save', {
+    '../models': mockModels
+  })
 
-const fakeUser = { update: stub() }
-
-describe('src/save', () => {
+  const id = 1
   const data = {
     firstname: 'Testy',
     lastname: 'McTestface',
     email: 'testy.mctestface.test.tes',
     token: 'some-token'
   }
-
-  const resetStubs = () => {
-    mockModels.User.findOne.resetHistory()
-    fakeUser.update.resetHistory()
-  }
+  const fakeUser = { id, ...data, update: stub() }
 
   let result
 
   context('user does not exist', () => {
     before(async () => {
-      mockModels.User.findOne.resolves(undefined)
-      result = await save(data)
+      User.findOne.resolves(undefined)
+      result = await save({ id, ...data })
     })
 
-    after(resetStubs)
+    after(resetHistory)
 
     it('called User.findOne', () => {
-      expect(mockModels.User.findOne).to.have.been.called
+      expect(User.findOne).to.have.been.calledWith(match({ where: { id } }))
     })
 
     it("didn't call user.update", () => {
@@ -277,14 +275,14 @@ describe('src/save', () => {
   context('user exists', () => {
     before(async () => {
       fakeUser.update.resolves(fakeUser)
-      mockModels.User.findOne.resolves(fakeUser)
-      result = await save(data)
+      User.findOne.resolves(fakeUser)
+      result = await save({ id, ...data })
     })
 
-    after(resetStubs)
+    after(resetHistory)
 
     it('called User.findOne', () => {
-      expect(mockModels.User.findOne).to.have.been.called
+      expect(User.findOne).to.have.been.calledWith(match({ where: { id } }))
     })
 
     it('called user.update', () => {
@@ -311,6 +309,22 @@ console.log(listModels()) // will spit out a list of your model names.
 ```
 
 Similarly to `makeMockModels` above, `listModels` will find all of the models defined in your `src/models` folder (or if you have a `.sequelizerc` file it will look for the `model-path` in that).
+
+## Custom `models` paths and custom file suffixes
+
+By default `makeMockModels` and `listModels` will both look for your models in files ending with `.js` in either the models path defined in `.sequelizerc`, or in `src/models`. If however your models are not `.js` files and the `models` folder is somewhere else you can pass in a custom models folder path and a custom suffix.
+
+- `listModels(customModelsFolder, customSuffix)`
+
+  ```js
+  const modelNames = listModels('models', '.ts')
+  ```
+
+- `makeMockModels(yourCustomModels, customModelsFolder, customSuffix)`
+
+  ```js
+  const models = makeMockModels({ User: { findOne: stub() } }, 'models', '.ts')
+  ```
 
 ## Development
 

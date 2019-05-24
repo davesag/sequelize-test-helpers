@@ -1,4 +1,6 @@
-const fileFilter = file =>
-  file.indexOf('.') !== 0 && file !== 'index.js' && file.slice(-3) === '.js'
+const fileFilter = suffix => file =>
+  file.indexOf('.') !== 0 &&
+  file !== `index${suffix}` &&
+  file.slice(-suffix.length) === suffix
 
 module.exports = fileFilter
