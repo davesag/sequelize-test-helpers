@@ -6,6 +6,6 @@ describe('src/utils/fileFilter', () => {
   const expected = ['test.js']
 
   it('filters correctly', () => {
-    expect(input.filter(fileFilter)).to.deep.equal(expected)
+    expect(input.filter(fileFilter('.js'))).to.deep.equal(expected)
   })
 })

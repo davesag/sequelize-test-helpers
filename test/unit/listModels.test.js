@@ -4,9 +4,19 @@ const { listModels } = require('../../src')
 
 describe('src/listModels', () => {
   const expected = ['HasHooks', 'Indexed', 'Simple']
-  const models = listModels('test/models')
+  context('default suffix', () => {
+    const models = listModels('test/models')
 
-  it('lists the models', () => {
-    expect(models).to.deep.equal(expected)
+    it('lists the models', () => {
+      expect(models).to.deep.equal(expected)
+    })
+  })
+
+  context('custom suffix', () => {
+    const models = listModels('test/models', '.js')
+
+    it('lists the models', () => {
+      expect(models).to.deep.equal(expected)
+    })
   })
 })
