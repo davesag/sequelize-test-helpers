@@ -2,16 +2,6 @@
 
 A collection of utilities to help with unit-testing [Sequelize](http://docs.sequelizejs.com) models and code that needs those models.
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/davesag/sequelize-test-helpers.svg)](https://greenkeeper.io/)
-
-## Branches
-
-<!-- prettier-ignore -->
-| Branch | Status | Coverage |   |
-| ------ | ------ | -------- | - |
-| `develop` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | Work in progress |
-| `master` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/master) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | Latest stable release |
-
 [![NPM](https://nodei.co/npm/sequelize-test-helpers.png)](https://nodei.co/npm/sequelize-test-helpers/)
 
 ## Related Projects
@@ -327,6 +317,16 @@ By default `makeMockModels` and `listModels` will both look for your models in f
   ```
 
 ## Development
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/davesag/sequelize-test-helpers.svg)](https://greenkeeper.io/)
+
+## Branches
+
+<!-- prettier-ignore -->
+| Branch | Status | Coverage |   |
+| ------ | ------ | -------- | - |
+| `develop` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | Work in progress |
+| `master` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/master) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | Latest stable release |
 
 ### Prerequisites
 
