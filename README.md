@@ -16,6 +16,7 @@ This library assumes:
 
 1. You are using [`chai`](http://www.chaijs.com) — Version 4 or better.
 2. You are using [`sinon`](http://sinonjs.org) — Version 5 or better.
+3. Using [`mocha`](https://mochajs.org) is also recommended, but as long as you are using `chai` and `sinon` this should work with any test runner.
 
 ### Installation
 
@@ -90,7 +91,7 @@ const model = (sequelize, DataTypes) => {
 module.exports = model
 ```
 
-You can use `sequelize-test-helpers` to unit-test this as follows:
+You can use `sequelize-test-helpers` to unit-test this with `mocha` as follows:
 
 #### `test/unit/models/User.spec.js`
 
