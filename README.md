@@ -2,16 +2,6 @@
 
 A collection of utilities to help with unit-testing [Sequelize](http://docs.sequelizejs.com) models and code that needs those models.
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/davesag/sequelize-test-helpers.svg)](https://greenkeeper.io/)
-
-## Branches
-
-<!-- prettier-ignore -->
-| Branch | Status | Coverage |   |
-| ------ | ------ | -------- | - |
-| `develop` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | Work in progress |
-| `master` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/master) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | Latest stable release |
-
 [![NPM](https://nodei.co/npm/sequelize-test-helpers.png)](https://nodei.co/npm/sequelize-test-helpers/)
 
 ## Related Projects
@@ -26,6 +16,7 @@ This library assumes:
 
 1. You are using [`chai`](http://www.chaijs.com) — Version 4 or better.
 2. You are using [`sinon`](http://sinonjs.org) — Version 5 or better.
+3. Using [`mocha`](https://mochajs.org) is also recommended, but as long as you are using `chai` and `sinon` this should work with any test runner.
 
 ### Installation
 
@@ -100,7 +91,7 @@ const model = (sequelize, DataTypes) => {
 module.exports = model
 ```
 
-You can use `sequelize-test-helpers` to unit-test this as follows:
+You can use `sequelize-test-helpers` to unit-test this with `mocha` as follows:
 
 #### `test/unit/models/User.spec.js`
 
@@ -327,6 +318,16 @@ By default `makeMockModels` and `listModels` will both look for your models in f
   ```
 
 ## Development
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/davesag/sequelize-test-helpers.svg)](https://greenkeeper.io/)
+
+## Branches
+
+<!-- prettier-ignore -->
+| Branch | Status | Coverage |   |
+| ------ | ------ | -------- | - |
+| `develop` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | Work in progress |
+| `master` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/master) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | Latest stable release |
 
 ### Prerequisites
 
