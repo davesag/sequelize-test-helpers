@@ -3,17 +3,25 @@
   "version": "1.1.2",
   "description": "A collection of utilities to help with unit-testing sequelize models",
   "author": "Dave Sag <davesag@gmail.com>",
+  "type": "commonjs",
   "license": "MIT",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/davesag"
+  },
   "main": "src/index.js",
   "engines": {
     "node": ">= 8.10.0"
   },
   "files": [
-    "/package*.json",
-    "/CONTRIBUTING.md",
-    "/src",
-    "/logo/horizontal.svg"
+    "CONTRIBUTING.md",
+    "src",
+    "logo/horizontal.svg"
   ],
+  "directories": {
+    "lib": "src",
+    "test": "test"
+  },
   "scripts": {
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "lint": "eslint .",
@@ -25,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davesag/sequelize-test-helpers.git"
+    "url": "https://github.com/davesag/sequelize-test-helpers.git"
   },
   "bugs": {
     "url": "https://github.com/davesag/sequelize-test-helpers/issues"
@@ -81,6 +89,11 @@
       "git add"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "nyc": {
     "check-coverage": true,
     "per-file": true,
@@ -100,10 +113,5 @@
     ],
     "all": true,
     "cache": true
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
