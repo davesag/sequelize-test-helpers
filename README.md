@@ -28,7 +28,9 @@ npm i -D sequelize-test-helpers
 
 ## Examples
 
-### Unit Testing Models
+### Unit testing models created with `sequelize.define`
+
+**Note**: See below for how to test models created using `Model.init`
 
 Let's say you have a Sequelize model `User` as follows:
 
@@ -138,7 +140,7 @@ describe('src/models/User', () => {
 })
 ```
 
-### Built in checks
+### Built-in checks
 
 | Check | What it does |
 | --- | --- |
@@ -289,9 +291,74 @@ describe('src/utils/save', () => {
 
 As a convenience, `makeMockModels` will automatically populate your `mockModels` with mocks of all of the models defined in your `src/models` folder (or if you have a `.sequelizerc` file it will look for the `model-path` in that). Simply override any of the specific models you need to do stuff with.
 
+### Testing models created with `Model.init`
+
+Sequelize also allows you to create models by extending `Sequelize.Model` and invoking its static `init` function as follows:
+
+**Note**: creating your models this way makes it harder to test their use.
+
+```js
+const { Model, DataTypes } = require('sequelize')
+
+const factory = sequelize => {
+  class User extends Model {}
+  User.init(
+    {
+      firstName: DataTypes.STRING,
+      lastName: DataTypes.STRING
+    },
+    { sequelize, modelName: 'User' }
+  )
+  return User
+}
+
+module.exports = factory
+```
+
+You can test this using `sequelize-test-helpers`, `sinon`, and `proxyquire`.
+
+```js
+const { expect } = require('chai')
+const { spy } = require('sinon')
+const proxyquire = require('proxyquire')
+const { sequelize, Sequelize } = require('sequelize-test-helpers')
+
+describe('src/models/User', () => {
+  const { DataTypes } = Sequelize
+
+  const UserFactory = proxyquire('src/models/User', {
+    sequelize: Sequelize
+  })
+
+  let User
+
+  before(() => {
+    User = UserFactory(sequelize)
+  })
+
+  // It's important you do this
+  after(() => {
+    User.init.resetHistory()
+  })
+
+  it('called User.init with the correct parameters', () => {
+    expect(User.init).to.have.been.calledWith(
+      {
+        firstName: DataTypes.STRING,
+        lastName: DataTypes.STRING
+      },
+      {
+        sequelize,
+        modelName: 'User'
+      }
+    )
+  })
+})
+```
+
 ### Listing your models
 
-It's useful to be able to generate a list of the names of your models.
+Assuming your `src/models/index.js` (or your equivalent) exports all your models, it's useful to be able to generate a list of their names.
 
 ```js
 const { listModels } = require('sequelize-test-helpers')
