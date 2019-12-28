@@ -1,18 +1,7 @@
 const { expect } = require('chai')
 
 const sequelize = require('../../src/sequelize')
-
-const STATIC_METHODS = [
-  'and',
-  'cast',
-  'col',
-  'fn',
-  'json',
-  'literal',
-  'or',
-  'useCLS',
-  'where'
-]
+const staticMethods = require('../../src/constants/staticMethods')
 
 describe('src/sequelize', () => {
   it('has define', () => {
@@ -20,7 +9,7 @@ describe('src/sequelize', () => {
     expect(sequelize.define).to.be.a('function')
   })
 
-  STATIC_METHODS.forEach(method => {
+  staticMethods.forEach(method => {
     it(`has static method ${method}`, () => {
       expect(sequelize[method]).to.be.a('function')
     })

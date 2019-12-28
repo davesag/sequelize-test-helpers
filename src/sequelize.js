@@ -1,17 +1,6 @@
 const sinon = require('sinon')
 const hooks = require('./constants/hooks')
-
-const STATICS_METHODS = [
-  'and',
-  'cast',
-  'col',
-  'fn',
-  'json',
-  'literal',
-  'or',
-  'useCLS',
-  'where'
-]
+const staticMethods = require('./constants/staticMethods')
 
 const sequelize = {
   define: (modelName, modelDefn, metaData = {}) => {
@@ -56,7 +45,7 @@ const sequelize = {
   }
 }
 
-STATICS_METHODS.forEach(method => {
+staticMethods.forEach(method => {
   sequelize[method] = sinon.stub()
 })
 
