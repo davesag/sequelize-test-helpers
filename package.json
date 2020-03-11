@@ -49,7 +49,7 @@
     "chai"
   ],
   "devDependencies": {
-    "@stryker-mutator/core": "^2.5.0",
+    "@stryker-mutator/core": "^3.0.0",
     "@stryker-mutator/javascript-mutator": "^2.5.0",
     "@stryker-mutator/mocha-framework": "^2.5.0",
     "@stryker-mutator/mocha-runner": "^2.5.0",
