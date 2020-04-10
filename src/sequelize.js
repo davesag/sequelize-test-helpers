@@ -4,7 +4,7 @@ const staticMethods = require('./constants/staticMethods')
 
 const sequelize = {
   define: (modelName, modelDefn, metaData = {}) => {
-    const model = function() {}
+    const model = function () {}
     model.modelName = modelName
 
     const attachHook = name => hook => {
