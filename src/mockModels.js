@@ -30,11 +30,7 @@ const listToObject = (acc, elem) => {
 const listModels = (
   /* istanbul ignore next */ folder = DEFAULT_MODELS_FOLDER,
   suffix = DEFAULT_SUFFIX
-) =>
-  fs
-    .readdirSync(folder)
-    .filter(fileFilter(suffix))
-    .map(makeName(suffix))
+) => fs.readdirSync(folder).filter(fileFilter(suffix)).map(makeName(suffix))
 
 const finder = (folder, suffix) =>
   listModels(folder, suffix).reduce(listToObject, {})

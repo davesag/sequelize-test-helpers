@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
     mutate: ['src/**/*.js', '!src/checks/check*.js', '!src/mockModels.js'],
     mutator: 'javascript',

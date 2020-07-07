@@ -1,10 +1,11 @@
 const sinon = require('sinon')
 const hooks = require('./constants/hooks')
 const staticMethods = require('./constants/staticMethods')
+const { syncMethods, asyncMethods } = require('./constants/staticModelMethods')
 
 const sequelize = {
   define: (modelName, modelDefn, metaData = {}) => {
-    const model = function() {}
+    const model = function () {}
     model.modelName = modelName
 
     const attachHook = name => hook => {
@@ -15,6 +16,10 @@ const sequelize = {
 
     const attachProp = key => {
       model.prototype[key] = modelDefn[key]
+    }
+
+    const addStatic = key => {
+      model[key] = sinon.stub()
     }
 
     hooks.forEach(hook => {
@@ -28,10 +33,8 @@ const sequelize = {
 
     model.hook = model.addHook
 
-    model.belongsToMany = sinon.spy()
-    model.belongsTo = sinon.spy()
-    model.hasMany = sinon.spy()
-    model.hasOne = sinon.spy()
+    syncMethods.forEach(addStatic)
+    asyncMethods.forEach(addStatic)
 
     model.isHierarchy = sinon.spy()
 
