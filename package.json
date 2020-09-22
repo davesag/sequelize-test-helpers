@@ -85,7 +85,8 @@
     "singleQuote": true,
     "proseWrap": "never",
     "arrowParens": "avoid",
-    "trailingComma": "none"
+    "trailingComma": "none",
+    "printWidth": 100
   },
   "lint-staged": {
     "**/*.{js,json,md}": [
