@@ -1,7 +1,7 @@
 const { expect } = require('chai')
 
 const dataTypes = require('../../src/dataTypes')
-const noop = require('../../src/types/noop')
+const Noop = require('../../src/types/Noop')
 const NumericType = require('../../src/types/NumericType')
 const StringType = require('../../src/types/StringType')
 
@@ -69,7 +69,7 @@ describe('dataTypes', () => {
 
   it('has basicTypes', () => {
     basicTypes.forEach(type => {
-      expect(dataTypes).to.have.property(type, noop)
+      expect(dataTypes).to.have.property(type, Noop)
     })
   })
 
