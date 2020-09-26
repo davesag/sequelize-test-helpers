@@ -1,4 +1,4 @@
-const noop = require('./types/noop')
+const Noop = require('./types/Noop')
 const NumericType = require('./types/NumericType')
 const StringType = require('./types/StringType')
 const basicTypes = require('./constants/basicTypes')
@@ -7,7 +7,7 @@ const stringTypes = require('./constants/stringTypes')
 const deferrables = require('./constants/deferrables')
 
 const basicDataTypes = basicTypes.reduce((acc, elem) => {
-  acc[elem] = noop
+  acc[elem] = Noop
   return acc
 }, {})
 
