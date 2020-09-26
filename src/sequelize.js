@@ -27,9 +27,7 @@ const sequelize = {
     })
 
     model.addHook = (hookType, name, hook) =>
-      typeof name === 'function'
-        ? attachHook(hookType)(name)
-        : attachHook(hookType)(hook)
+      typeof name === 'function' ? attachHook(hookType)(name) : attachHook(hookType)(hook)
 
     model.hook = model.addHook
 

@@ -32,8 +32,7 @@ const listModels = (
   suffix = DEFAULT_SUFFIX
 ) => fs.readdirSync(folder).filter(fileFilter(suffix)).map(makeName(suffix))
 
-const finder = (folder, suffix) =>
-  listModels(folder, suffix).reduce(listToObject, {})
+const finder = (folder, suffix) => listModels(folder, suffix).reduce(listToObject, {})
 
 const makeMockModels = (models, folder, suffix) => ({
   ...finder(folder, suffix),
