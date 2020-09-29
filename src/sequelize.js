@@ -42,6 +42,7 @@ const sequelize = {
     Object.keys(modelDefn).forEach(attachProp)
 
     model.prototype.indexes = metaData.indexes
+    model.prototype.scopes = metaData.scopes
     return model
   }
 }
