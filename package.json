@@ -1,8 +1,11 @@
 {
   "name": "sequelize-test-helpers",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "A collection of utilities to help with unit-testing sequelize models",
   "author": "Dave Sag <davesag@gmail.com>",
+  "contributors": [
+    "gerhardkubion (https://github.com/gerhardkubion)"
+  ],
   "type": "commonjs",
   "license": "MIT",
   "funding": {
