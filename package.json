@@ -1,6 +1,6 @@
 {
   "name": "sequelize-test-helpers",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "A collection of utilities to help with unit-testing sequelize models",
   "author": "Dave Sag <davesag@gmail.com>",
   "contributors": [
@@ -75,9 +75,9 @@
     "nyc": "^15.1.0",
     "prettier": "^2.1.2",
     "proxyquire": "^2.1.3",
-    "sinon": "^9.1.0",
+    "sinon": "^9.2.0",
     "sinon-chai": "^3.5.0",
-    "snyk": "^1.404.0"
+    "snyk": "^1.410.2"
   },
   "peerDependencies": {
     "chai": ">= 4",

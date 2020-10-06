@@ -43,6 +43,7 @@ const sequelize = {
 
     model.prototype.indexes = metaData.indexes
     model.prototype.scopes = metaData.scopes
+    model.prototype.validate = metaData.validate
     return model
   }
 }
