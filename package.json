@@ -55,7 +55,7 @@
   "devDependencies": {
     "@stryker-mutator/core": "^4.0.0",
     "@stryker-mutator/mocha-runner": "^4.0.0",
-    "ajv": "^6.12.5",
+    "ajv": "^6.12.6",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "eslint": "^7.11.0",
