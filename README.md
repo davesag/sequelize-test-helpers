@@ -394,7 +394,7 @@ By default `makeMockModels` and `listModels` will both look for your models in f
 
 ### Prerequisites
 
-- [NodeJS](htps://nodejs.org), version 8.10.0 or better (I use [`nvm`](https://github.com/creationix/nvm) to manage Node versions — `brew install nvm`.)
+- [NodeJS](htps://nodejs.org), version 15.0.1 or better (I use [`nvm`](https://github.com/creationix/nvm) to manage Node versions — `brew install nvm`.)
 
 ### Initialisation
 
