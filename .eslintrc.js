@@ -1,8 +1,6 @@
-// includes mocha plugins and env here because the code is
-// designed to run in a mocha context
 module.exports = {
-  extends: ['standard', 'prettier', 'prettier/standard'],
-  plugins: ['prettier', 'import', 'promise', 'mocha'],
+  extends: ['standard', 'plugin:prettier/recommended'],
+  plugins: ['import', 'promise', 'mocha'],
   parserOptions: {
     sourceType: 'module'
   },
