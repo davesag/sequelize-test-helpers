@@ -394,7 +394,7 @@ By default `makeMockModels` and `listModels` will both look for your models in f
 
 ### Prerequisites
 
-- [NodeJS](htps://nodejs.org), version 8.10.0 or better (I use [`nvm`](https://github.com/creationix/nvm) to manage Node versions — `brew install nvm`.)
+- [NodeJS](htps://nodejs.org). I use [`nvm`](https://github.com/creationix/nvm) to manage Node versions — `brew install nvm`.
 
 ### Initialisation
 
@@ -406,7 +406,6 @@ npm install
 
 - `npm test` — runs the unit tests
 - `npm run test:unit:cov` — runs the unit tests with code coverage
-- `npm run test:mutants` — runs the mutation tests
 
 ### Lint it
 
