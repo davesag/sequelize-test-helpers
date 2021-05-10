@@ -1,4 +1,4 @@
-// const { expect } = require('chai')
+const { isJestRunner, expect } = require('../../../src/utils/checkIsJestRunner')
 
 const { sequelize, dataTypes, checkNonUniqueIndex } = require('../../../src')
 const IndexedModel = require('../../models/Indexed')
@@ -12,8 +12,12 @@ describe('src/checkNonUniqueIndex', () => {
 
   describe('unhappy path', () => {
     it('fails the test', () =>
-      expect(() => {
-        checkNonUniqueIndex(instance)('no name')
-      }).toThrow())
+      isJestRunner ?
+        expect(() => {
+          checkNonUniqueIndex(instance)('no name')
+        }).toThrow() :
+        expect(() => {
+          checkNonUniqueIndex(instance)('no name')
+        }).to.throw)
   })
 })

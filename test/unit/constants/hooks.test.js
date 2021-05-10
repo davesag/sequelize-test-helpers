@@ -1,4 +1,4 @@
-// const { expect } = require('chai')
+const { isJestRunner, expect } = require('../../../src/utils/checkIsJestRunner')
 const hooks = require('../../../src/constants/hooks')
 
 // pulled from https://github.com/sequelize/sequelize/blob/master/lib/hooks.js#L8
@@ -54,6 +54,8 @@ const allHooks = Object.keys(hookTypes).reduce((acc, elem) => {
 
 describe('src/hooks', () => {
   it('lists all the hooks', () => {
-    expect(hooks).toIncludeAllMembers(allHooks)
+    isJestRunner ?
+      expect(hooks).toIncludeAllMembers(allHooks) :
+      expect(hooks).to.include.members(allHooks)
   })
 })

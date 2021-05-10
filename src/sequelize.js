@@ -1,12 +1,13 @@
-// const jest = require('jest-mock')
-// const sinon = require('sinon')
+const sinon = require('sinon')
 const hooks = require('./constants/hooks')
 const staticMethods = require('./constants/staticMethods')
 const { syncMethods, asyncMethods } = require('./constants/staticModelMethods')
+const { isJestRunner } = require('./utils/checkIsJestRunner')
 
 const sequelize = {
   define: (modelName, modelDefn, metaData = {}) => {
-    const model = function () {}
+    const model = function() {
+    }
     model.modelName = modelName
 
     const attachHook = name => hook => {
@@ -20,7 +21,7 @@ const sequelize = {
     }
 
     const addStatic = key => {
-      model[key] = jest.fn()
+      model[key] = isJestRunner ? jest.fn() : sinon.stub()
     }
 
     hooks.forEach(hook => {
@@ -35,11 +36,11 @@ const sequelize = {
     syncMethods.forEach(addStatic)
     asyncMethods.forEach(addStatic)
 
-    model.isHierarchy = jest.fn()
+    model.isHierarchy = isJestRunner ? jest.fn() : sinon.spy()
 
-    model.prototype.update = jest.mock()
-    model.prototype.reload = jest.mock()
-    model.prototype.set = jest.fn()
+    model.prototype.update = isJestRunner ? jest.mock() : sinon.stub()
+    model.prototype.reload = isJestRunner ? jest.mock() : sinon.stub()
+    model.prototype.set = isJestRunner ? jest.fn() : sinon.spy()
     Object.keys(modelDefn).forEach(attachProp)
 
     model.prototype.indexes = metaData.indexes
@@ -50,7 +51,7 @@ const sequelize = {
 }
 
 staticMethods.forEach(method => {
-  sequelize[method] = jest.mock()
+  sequelize[method] = isJestRunner ? jest.mock() : sinon.stub()
 })
 
 module.exports = sequelize

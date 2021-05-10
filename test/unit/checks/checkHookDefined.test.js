@@ -1,4 +1,4 @@
-// const { expect } = require('chai')
+const { isJestRunner, expect } = require('../../../src/utils/checkIsJestRunner')
 
 const { sequelize, dataTypes, checkHookDefined } = require('../../../src')
 const HasHooksModel = require('../../models/HasHooks')
@@ -15,8 +15,12 @@ describe('src/checkHookDefined', () => {
     const instance = new Model()
 
     it('fails the test', () =>
-      expect(() => {
-        checkHookDefined(instance)('not a hook')
-      }).toThrow())
+      isJestRunner ?
+        expect(() => {
+          checkHookDefined(instance)('not a hook')
+        }).toThrow() :
+        expect(() => {
+          checkHookDefined(instance)('not a hook')
+        }).to.throw)
   })
 })

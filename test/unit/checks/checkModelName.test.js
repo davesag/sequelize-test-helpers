@@ -1,4 +1,4 @@
-// const { expect } = require('chai')
+const { isJestRunner, expect } = require('../../../src/utils/checkIsJestRunner')
 
 const { sequelize, dataTypes, checkModelName } = require('../../../src')
 const SimpleModel = require('../../models/Simple')
@@ -11,8 +11,12 @@ describe('src/checkModelName', () => {
 
   describe('unhappy path', () => {
     it('fails the test', () =>
-      expect(() => {
-        checkModelName(Model)('Not So Simple')
-      }).toThrow())
+      isJestRunner ?
+        expect(() => {
+          checkModelName(Model)('Not So Simple')
+        }).toThrow() :
+        expect(() => {
+          checkModelName(Model)('Not So Simple')
+        }).to.throw)
   })
 })

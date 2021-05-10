@@ -1,16 +1,22 @@
-// const { expect } = require('chai')
+const { isJestRunner, expect } = require('../../../src/utils/checkIsJestRunner')
 const StringType = require('../../../src/types/StringType')
 
 describe('src/types/StringType', () => {
   it('is a function', () => {
-    expect(StringType).toBeFunction()
+    isJestRunner ?
+      expect(StringType).toBeFunction() :
+      expect(StringType).to.be.a('function')
   })
 
   it('returns itself', () => {
-    expect(StringType()).toEqual(StringType)
+    isJestRunner ?
+      expect(StringType()).toEqual(StringType) :
+      expect(StringType()).to.equal(StringType)
   })
 
   it('has property BINARY', () => {
-    expect(StringType).toHaveProperty('BINARY', StringType)
+    isJestRunner ?
+      expect(StringType).toHaveProperty('BINARY', StringType) :
+      expect(StringType).to.have.property('BINARY', StringType)
   })
 })

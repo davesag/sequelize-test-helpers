@@ -1,4 +1,4 @@
-// const { expect } = require('chai')
+const { isJestRunner, expect } = require('../../../src/utils/checkIsJestRunner')
 const fileFilter = require('../../../src/utils/fileFilter')
 
 describe('src/utils/fileFilter', () => {
@@ -6,6 +6,8 @@ describe('src/utils/fileFilter', () => {
   const expected = ['test.js']
 
   it('filters correctly', () => {
-    expect(input.filter(fileFilter('.js'))).toEqual(expected)
+    isJestRunner ?
+      expect(input.filter(fileFilter('.js'))).toEqual(expected) :
+      expect(input.filter(fileFilter('.js'))).to.deep.equal(expected)
   })
 })

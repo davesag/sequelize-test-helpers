@@ -36,8 +36,8 @@
     "test:jest": "npm run test:jest:unit",
     "test:unit": "NODE_ENV=test mocha ./test/unit/ --require ./test/unitTestHelper.js --recursive",
     "test:unit:cov": "NODE_ENV=test nyc mocha ./test/unit/ --require ./test/unitTestHelper.js --recursive",
-    "test:jest:unit": "NODE_ENV=test JEST_RUNNER=true jest ./test/unit/",
-    "test:jest:unit:cov": "NODE_ENV=test JEST_RUNNER=true jest --coverage ./test/unit/",
+    "test:jest:unit": "NODE_ENV=test SEQUELIZE_TEST_HELPERS_JEST_RUNNER=true jest ./test/unit/",
+    "test:jest:unit:cov": "NODE_ENV=test SEQUELIZE_TEST_HELPERS_JEST_RUNNER=true jest --coverage ./test/unit/",
     "snyk-protect": "snyk protect"
   },
   "repository": {
