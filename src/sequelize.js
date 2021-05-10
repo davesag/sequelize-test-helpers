@@ -20,7 +20,7 @@ const sequelize = {
     }
 
     const addStatic = key => {
-      model[key] = jest.mock()
+      model[key] = jest.fn()
     }
 
     hooks.forEach(hook => {

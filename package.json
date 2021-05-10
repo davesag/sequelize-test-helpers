@@ -33,8 +33,11 @@
     "lint": "eslint .",
     "prettier": "prettier --write '**/*.{js,json,md}'",
     "test": "npm run test:unit",
-    "test:unit": "NODE_ENV=test jest ./test/unit/ ./test/unitTestHelper.js",
-    "test:unit:cov": "NODE_ENV=test nyc jest ./test/unit/ --require ./test/unitTestHelper.js --recursive",
+    "test:jest": "npm run test:jest:unit",
+    "test:unit": "NODE_ENV=test mocha ./test/unit/ --require ./test/unitTestHelper.js --recursive",
+    "test:unit:cov": "NODE_ENV=test nyc mocha ./test/unit/ --require ./test/unitTestHelper.js --recursive",
+    "test:jest:unit": "NODE_ENV=test JEST_RUNNER=true jest ./test/unit/",
+    "test:jest:unit:cov": "NODE_ENV=test JEST_RUNNER=true jest --coverage ./test/unit/",
     "snyk-protect": "snyk protect"
   },
   "repository": {
