@@ -11,7 +11,7 @@ describe('src/sequelize', () => {
 
   staticMethods.forEach(method => {
     it(`has static method ${method}`, () => {
-      expect(sequelize[method]).toBeFunction()
+      expect(sequelize[method]).toBeObject()
     })
   })
 })
