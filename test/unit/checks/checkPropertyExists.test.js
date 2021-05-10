@@ -1,4 +1,4 @@
-const { expect } = require('chai')
+// const { expect } = require('chai')
 
 const { sequelize, dataTypes, checkPropertyExists } = require('../../../src')
 const SimpleModel = require('../../models/Simple')
@@ -6,14 +6,14 @@ const SimpleModel = require('../../models/Simple')
 describe('src/checkPropertyExists', () => {
   const Model = SimpleModel(sequelize, dataTypes)
   const instance = new Model()
-  context('happy path', () => {
+  describe('happy path', () => {
     ;['name'].forEach(checkPropertyExists(instance))
   })
 
-  context('unhappy path', () => {
+  describe('unhappy path', () => {
     it('fails the test', () =>
       expect(() => {
         checkPropertyExists(instance)('no name')
-      }).to.throw)
+      }).toThrow())
   })
 })

@@ -116,11 +116,11 @@ describe('src/models/User', () => {
 
   checkModelName(User)('User')
 
-  context('properties', () => {
+  describe('properties', () => {
     ;['age', 'firstname', 'lastname', 'email', 'token'].forEach(checkPropertyExists(user))
   })
 
-  context('associations', () => {
+  describe('associations', () => {
     const Company = 'some dummy company'
 
     before(() => {
@@ -132,7 +132,7 @@ describe('src/models/User', () => {
     })
   })
 
-  context('indexes', () => {
+  describe('indexes', () => {
     ;['email', 'token'].forEach(checkUniqueIndex(user))
   })
 })
@@ -242,7 +242,7 @@ describe('src/utils/save', () => {
 
   let result
 
-  context('user does not exist', () => {
+  describe('user does not exist', () => {
     before(async () => {
       User.findOne.resolves(undefined)
       result = await save({ id, ...data })
@@ -263,7 +263,7 @@ describe('src/utils/save', () => {
     })
   })
 
-  context('user exists', () => {
+  describe('user exists', () => {
     before(async () => {
       fakeUser.update.resolves(fakeUser)
       User.findOne.resolves(fakeUser)
@@ -281,7 +281,7 @@ describe('src/utils/save', () => {
     })
 
     it('returned the user', () => {
-      expect(result).to.deep.equal(fakeUser)
+      expect(result).toEqual(fakeUser)
     })
   })
 })

@@ -1,8 +1,8 @@
-const { expect } = require('chai')
+// const { expect } = require('chai')
 
 const checkPropertyExists = instance => propName => {
   it(`has property ${propName}`, () => {
-    expect(instance).to.have.property(propName)
+    expect(instance).toHaveProperty(propName)
   })
 }
 

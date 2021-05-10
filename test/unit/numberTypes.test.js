@@ -5,7 +5,7 @@ const { dataTypes } = require('../../src')
 describe('src/dataTypes#numeric', () => {
   const doTest = dataType => {
     describe(`Testing ${dataType}`, () => {
-      context('non function', () => {
+      describe('non function', () => {
         it(`supports ${dataType} with ZEROFILL`, () => {
           expect(dataTypes[dataType].ZEROFILL).to.exist
         })
@@ -23,7 +23,7 @@ describe('src/dataTypes#numeric', () => {
         })
       })
 
-      context('function', () => {
+      describe('function', () => {
         it(`supports ${dataType}() with ZEROFILL`, () => {
           expect(dataTypes[dataType](10).ZEROFILL).to.exist
         })
