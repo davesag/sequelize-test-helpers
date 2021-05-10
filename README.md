@@ -18,6 +18,9 @@ This library assumes:
 2. You are using [`sinon`](http://sinonjs.org) — Version 5 or better.
 3. Using [`mocha`](https://mochajs.org) is also recommended, but as long as you are using `chai` and `sinon` this should work with any test runner.
 
+**NB. You can also use [`jest`](https://jestjs.io) - Version 26 or better. Ensure `SEQUELIZE_TEST_HELPERS_JEST_RUNNER=true` is set in your environment.**
+
+
 ### Installation
 
 Add `sequelize-test-helpers` as a `devDependency`:
