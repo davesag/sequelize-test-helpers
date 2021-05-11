@@ -1,8 +1,7 @@
-const sinon = require('sinon')
 const hooks = require('./constants/hooks')
 const staticMethods = require('./constants/staticMethods')
 const { syncMethods, asyncMethods } = require('./constants/staticModelMethods')
-const { isJestRunner } = require('./utils/checkIsJestRunner')
+const { isJestRunner, sinon } = require('./utils/checkIsJestRunner')
 
 const sequelize = {
   define: (modelName, modelDefn, metaData = {}) => {
