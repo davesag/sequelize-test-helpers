@@ -55,7 +55,8 @@
     "unit-testing",
     "mocha",
     "sinon",
-    "chai"
+    "chai",
+    "jest"
   ],
   "devDependencies": {
     "ajv": "^8.1.0",
