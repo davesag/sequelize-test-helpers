@@ -54,8 +54,8 @@ const allHooks = Object.keys(hookTypes).reduce((acc, elem) => {
 
 describe('src/hooks', () => {
   it('lists all the hooks', () => {
-    isJestRunner ?
-      expect(hooks).toIncludeAllMembers(allHooks) :
-      expect(hooks).to.include.members(allHooks)
+    isJestRunner
+      ? expect(hooks).toIncludeAllMembers(allHooks)
+      : expect(hooks).to.include.members(allHooks)
   })
 })

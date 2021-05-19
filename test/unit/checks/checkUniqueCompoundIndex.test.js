@@ -12,12 +12,12 @@ describe('src/checkUniqueCompoundIndex', () => {
 
   describe('unhappy path', () => {
     it('fails the test', () =>
-      isJestRunner ?
-        expect(() => {
-          checkUniqueCompoundIndex(instance)('no such index')
-        }).toThrow() :
-        expect(() => {
-          checkUniqueCompoundIndex(instance)('no such index')
-        }).to.throw)
+      isJestRunner
+        ? expect(() => {
+            checkUniqueCompoundIndex(instance)('no such index')
+          }).toThrow()
+        : expect(() => {
+            checkUniqueCompoundIndex(instance)('no such index')
+          }).to.throw)
   })
 })

@@ -59,41 +59,39 @@ const deferrables = [
 
 describe('dataTypes', () => {
   it('is an object', () => {
-    isJestRunner ?
-      expect(dataTypes).toBeObject() :
-      expect(dataTypes).to.be.an('object')
+    isJestRunner ? expect(dataTypes).toBeObject() : expect(dataTypes).to.be.an('object')
   })
 
   it('has Deferrable', () => {
-    isJestRunner ?
-      expect(dataTypes).toHaveProperty('Deferrable') :
-      expect(dataTypes).to.have.property('Deferrable')
-    isJestRunner ?
-      expect(dataTypes.Deferrable).toContainKeys(deferrables) :
-      expect(dataTypes.Deferrable).to.have.keys(deferrables)
+    isJestRunner
+      ? expect(dataTypes).toHaveProperty('Deferrable')
+      : expect(dataTypes).to.have.property('Deferrable')
+    isJestRunner
+      ? expect(dataTypes.Deferrable).toContainKeys(deferrables)
+      : expect(dataTypes.Deferrable).to.have.keys(deferrables)
   })
 
   it('has basicTypes', () => {
     basicTypes.forEach(type => {
-      isJestRunner ?
-        expect(dataTypes).toHaveProperty(type, Noop) :
-        expect(dataTypes).to.have.property(type, Noop)
+      isJestRunner
+        ? expect(dataTypes).toHaveProperty(type, Noop)
+        : expect(dataTypes).to.have.property(type, Noop)
     })
   })
 
   it('has numericTypes', () => {
     numericTypes.forEach(type => {
-      isJestRunner ?
-        expect(dataTypes).toHaveProperty(type, NumericType) :
-        expect(dataTypes).to.have.property(type, NumericType)
+      isJestRunner
+        ? expect(dataTypes).toHaveProperty(type, NumericType)
+        : expect(dataTypes).to.have.property(type, NumericType)
     })
   })
 
   it('has stringTypes', () => {
     stringTypes.forEach(type => {
-      isJestRunner ?
-        expect(dataTypes).toHaveProperty(type, StringType) :
-        expect(dataTypes).to.have.property(type, StringType)
+      isJestRunner
+        ? expect(dataTypes).toHaveProperty(type, StringType)
+        : expect(dataTypes).to.have.property(type, StringType)
     })
   })
 })

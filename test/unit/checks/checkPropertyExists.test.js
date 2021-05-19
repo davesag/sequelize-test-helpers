@@ -12,12 +12,12 @@ describe('src/checkPropertyExists', () => {
 
   describe('unhappy path', () => {
     it('fails the test', () =>
-      isJestRunner ?
-        expect(() => {
-          checkPropertyExists(instance)('no name')
-        }).toThrow() :
-        expect(() => {
-          checkPropertyExists(instance)('no name')
-        }).to.throw)
+      isJestRunner
+        ? expect(() => {
+            checkPropertyExists(instance)('no name')
+          }).toThrow()
+        : expect(() => {
+            checkPropertyExists(instance)('no name')
+          }).to.throw)
   })
 })

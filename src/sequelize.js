@@ -5,8 +5,7 @@ const { isJestRunner, sinon } = require('./utils/checkIsJestRunner')
 
 const sequelize = {
   define: (modelName, modelDefn, metaData = {}) => {
-    const model = function() {
-    }
+    const model = function () {}
     model.modelName = modelName
 
     const attachHook = name => hook => {
@@ -37,8 +36,8 @@ const sequelize = {
 
     model.isHierarchy = isJestRunner ? jest.fn() : sinon.spy()
 
-    model.prototype.update = isJestRunner ? jest.mock() : sinon.stub()
-    model.prototype.reload = isJestRunner ? jest.mock() : sinon.stub()
+    model.prototype.update = isJestRunner ? jest.fn() : sinon.stub()
+    model.prototype.reload = isJestRunner ? jest.fn() : sinon.stub()
     model.prototype.set = isJestRunner ? jest.fn() : sinon.spy()
     Object.keys(modelDefn).forEach(attachProp)
 
@@ -50,7 +49,7 @@ const sequelize = {
 }
 
 staticMethods.forEach(method => {
-  sequelize[method] = isJestRunner ? jest.mock() : sinon.stub()
+  sequelize[method] = isJestRunner ? jest.fn() : sinon.stub()
 })
 
 module.exports = sequelize

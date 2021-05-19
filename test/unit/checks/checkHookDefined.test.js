@@ -15,12 +15,12 @@ describe('src/checkHookDefined', () => {
     const instance = new Model()
 
     it('fails the test', () =>
-      isJestRunner ?
-        expect(() => {
-          checkHookDefined(instance)('not a hook')
-        }).toThrow() :
-        expect(() => {
-          checkHookDefined(instance)('not a hook')
-        }).to.throw)
+      isJestRunner
+        ? expect(() => {
+            checkHookDefined(instance)('not a hook')
+          }).toThrow()
+        : expect(() => {
+            checkHookDefined(instance)('not a hook')
+          }).to.throw)
   })
 })

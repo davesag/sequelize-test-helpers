@@ -8,9 +8,7 @@ describe('src/listModels', () => {
     const models = listModels('test/models')
 
     it('lists the models', () => {
-      isJestRunner ?
-        expect(models).toEqual(expected) :
-        expect(models).to.deep.equal(expected)
+      isJestRunner ? expect(models).toEqual(expected) : expect(models).to.deep.equal(expected)
     })
   })
 
@@ -18,9 +16,7 @@ describe('src/listModels', () => {
     const models = listModels('test/models', '.js')
 
     it('lists the models', () => {
-      isJestRunner ?
-        expect(models).toEqual(expected) :
-        expect(models).to.deep.equal(expected)
+      isJestRunner ? expect(models).toEqual(expected) : expect(models).to.deep.equal(expected)
     })
   })
 })

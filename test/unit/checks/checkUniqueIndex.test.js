@@ -13,12 +13,12 @@ describe('src/checkUniqueIndex', () => {
 
   describe('unhappy path', () => {
     it('fails the test', () =>
-      isJestRunner ?
-        expect(() => {
-          checkUniqueIndex(instance)('no such index')
-        }).toThrow() :
-        expect(() => {
-          checkUniqueIndex(instance)('no such index')
-        }).to.throw)
+      isJestRunner
+        ? expect(() => {
+            checkUniqueIndex(instance)('no such index')
+          }).toThrow()
+        : expect(() => {
+            checkUniqueIndex(instance)('no such index')
+          }).to.throw)
   })
 })

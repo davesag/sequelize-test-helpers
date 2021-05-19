@@ -11,12 +11,12 @@ describe('src/checkModelName', () => {
 
   describe('unhappy path', () => {
     it('fails the test', () =>
-      isJestRunner ?
-        expect(() => {
-          checkModelName(Model)('Not So Simple')
-        }).toThrow() :
-        expect(() => {
-          checkModelName(Model)('Not So Simple')
-        }).to.throw)
+      isJestRunner
+        ? expect(() => {
+            checkModelName(Model)('Not So Simple')
+          }).toThrow()
+        : expect(() => {
+            checkModelName(Model)('Not So Simple')
+          }).to.throw)
   })
 })

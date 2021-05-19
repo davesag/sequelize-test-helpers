@@ -118,7 +118,9 @@
     "cache": true
   },
   "jest": {
-    "setupFilesAfterEnv": ["jest-extended"]
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ]
   },
   "snyk": true
 }

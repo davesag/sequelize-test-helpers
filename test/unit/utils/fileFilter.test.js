@@ -6,8 +6,8 @@ describe('src/utils/fileFilter', () => {
   const expected = ['test.js']
 
   it('filters correctly', () => {
-    isJestRunner ?
-      expect(input.filter(fileFilter('.js'))).toEqual(expected) :
-      expect(input.filter(fileFilter('.js'))).to.deep.equal(expected)
+    isJestRunner
+      ? expect(input.filter(fileFilter('.js'))).toEqual(expected)
+      : expect(input.filter(fileFilter('.js'))).to.deep.equal(expected)
   })
 })
