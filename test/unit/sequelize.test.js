@@ -16,7 +16,7 @@ describe('src/sequelize', () => {
   staticMethods.forEach(method => {
     it(`has static method ${method}`, () => {
       isJestRunner
-        ? expect(sequelize[method]).toBeObject()
+        ? expect(sequelize[method]).toBeFunction()
         : expect(sequelize[method]).to.be.a('function')
     })
   })

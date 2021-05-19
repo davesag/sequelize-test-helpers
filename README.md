@@ -20,7 +20,6 @@ This library assumes:
 
 **NB. You can also use [`jest`](https://jestjs.io) - Version 26 or better. Ensure `SEQUELIZE_TEST_HELPERS_JEST_RUNNER=true` is set in your environment.**
 
-
 ### Installation
 
 Add `sequelize-test-helpers` as a `devDependency`:
