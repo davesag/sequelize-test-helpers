@@ -390,7 +390,7 @@ By default `makeMockModels` and `listModels` will both look for your models in f
 | Branch | Status | Coverage | Audit | Notes |
 | ------ | ------ | -------- | ----- | ----- |
 | `develop` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | [![Vulnerabilities](https://snyk.io/test/github/davesag/sequelize-test-helpers/develop/badge.svg)](https://snyk.io/test/github/davesag/sequelize-test-helpers/develop) | Work in progress |
-| `master` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/master.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/master) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/master/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | [![Vulnerabilities](https://snyk.io/test/github/davesag/sequelize-test-helpers/master/badge.svg)](https://snyk.io/test/github/davesag/sequelize-test-helpers/master) | Latest stable release |
+| `main` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/main.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/main) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/main/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | [![Vulnerabilities](https://snyk.io/test/github/davesag/sequelize-test-helpers/main/badge.svg)](https://snyk.io/test/github/davesag/sequelize-test-helpers/main) | Latest stable release |
 
 ### Prerequisites
 
