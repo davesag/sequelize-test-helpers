@@ -1,7 +1,7 @@
 const { checkSingleIndex, checkAllIndexes } = require('./utils')
 
-const checkSingleNonUniqueIndex = instance => checkSingleIndex(instance, false)
-const checkAllNonUniqueIndexes = instance => checkAllIndexes(instance, false)
+const checkSingleNonUniqueIndex = instance => checkSingleIndex(instance)
+const checkAllNonUniqueIndexes = instance => checkAllIndexes(instance)
 
 const checkNonUniqueIndex = instance => indexName =>
   Array.isArray(indexName)
