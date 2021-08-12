@@ -62,3 +62,6 @@ typings/
 
 # macOS finder metadata
 .DS_Store
+
+# VS Code config
+.vscode/

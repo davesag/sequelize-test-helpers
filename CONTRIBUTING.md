@@ -16,7 +16,7 @@ See this handy, if ugly, [cheat sheet](http://danielkummer.github.io/git-flow-ch
 2. clone your fork to your local development machine
 3. Set this repo as the `upstream` repo `git remote add upstream <insert the upstream url>`
 4. Disallow direct pushing to upstream `git remote set-url --push upstream no_push`
-5. create a local `master` branch `git checkout -b master` and test it via `git pull upstream master`
+5. create a local `main` branch `git checkout -b main` and test it via `git pull upstream main`
 6. ensure you have installed the [`git-flow` command line helpers](https://github.com/nvie/gitflow) and [`git-flow-completion` utils](https://github.com/bobthecow/git-flow-completion) then run `git flow init -d`.
 
 #### Optional Git Setup
@@ -46,15 +46,15 @@ git config user.email "username@domain.suffix"
 
 #### Hotfixes and Support branches
 
-It's basically the same process but use the word `hotfix` or `support` instead of `feature`. `git flow` knows what to do. Just keep in mind that any changes are going to happen to your fork, and not the upstream repo. If you need to merge a `hotfix` into upstream master you may only do it va a reviewed pull request.
+It's basically the same process but use the word `hotfix` or `support` instead of `feature`. `git flow` knows what to do. Just keep in mind that any changes are going to happen to your fork, and not the upstream repo. If you need to merge a `hotfix` into upstream main you may only do it va a reviewed pull request.
 
 ### Releasing to production
 
 1. `git flow release start {tag.number}` (using semantic versioning)
 2. commit any changes to version info in `package.json` then `git flow release publish {tag.number}`
-3. `git flow release finish {tag.number}` merges the release into `master` of your fork, tags it, merges that back into `develop` on your fork and removes the release branch.
-4. Now go back to GitHub and raise a Pull Request to merge the upstream master from your fork's `master` branch. When that goes through you are done.
-5. In your command-line go back and clean up any outstanding branches and `git pull upstream` your local `master` and `develop` branches to ensure everything on your local machine is up to date with everyone's changes.
+3. `git flow release finish {tag.number}` merges the release into `main` of your fork, tags it, merges that back into `develop` on your fork and removes the release branch.
+4. Now go back to GitHub and raise a Pull Request to merge the upstream main from your fork's `main` branch. When that goes through you are done.
+5. In your command-line go back and clean up any outstanding branches and `git pull upstream` your local `main` and `develop` branches to ensure everything on your local machine is up to date with everyone's changes.
 
 Note you will **never** push changes directly to the upstream project, _only to your own fork_.
 
