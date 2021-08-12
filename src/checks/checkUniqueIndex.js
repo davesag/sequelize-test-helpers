@@ -1,10 +1,11 @@
-const { expect } = require('chai')
+const { checkSingleIndex, checkAllIndexes } = require('./utils')
 
-const checkUniqueIndex = instance => indexName => {
-  it(`indexed a unique ${indexName}`, () => {
-    expect(instance.indexes.find(index => index.unique === true && index.fields[0] === indexName))
-      .not.to.be.undefined
-  })
-}
+const checkSingleUniqueIndex = instance => checkSingleIndex(instance, true)
+const checkAllUniqueIndexes = instance => checkAllIndexes(instance, true)
+
+const checkUniqueIndex = instance => indexName =>
+  Array.isArray(indexName)
+    ? checkAllUniqueIndexes(instance)(indexName)
+    : checkSingleUniqueIndex(instance)(indexName)
 
 module.exports = checkUniqueIndex

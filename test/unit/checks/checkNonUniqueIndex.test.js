@@ -6,8 +6,9 @@ const IndexedModel = require('../../models/Indexed')
 describe('src/checkNonUniqueIndex', () => {
   const Model = IndexedModel(sequelize, dataTypes)
   const instance = new Model()
+
   context('happy path', () => {
-    ;['name'].forEach(checkNonUniqueIndex(instance))
+    ;['name', ['coffee', 'lunch']].forEach(checkNonUniqueIndex(instance))
   })
 
   context('unhappy path', () => {

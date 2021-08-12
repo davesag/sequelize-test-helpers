@@ -6,6 +6,7 @@ describe('src/checkHookDefined', () => {
   context('when hooks are defined', () => {
     const Model = HasHooksModel(sequelize, dataTypes)
     const instance = new Model()
+
     ;['beforeValidate', 'afterValidate', 'afterCreate'].forEach(checkHookDefined(instance))
   })
 

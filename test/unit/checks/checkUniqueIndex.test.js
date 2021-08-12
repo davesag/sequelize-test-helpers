@@ -8,7 +8,7 @@ describe('src/checkUniqueIndex', () => {
   const instance = new Model()
 
   context('happy path', () => {
-    ;['uuid'].forEach(checkUniqueIndex(instance))
+    ;['uuid', ['name', 'lunch']].forEach(checkUniqueIndex(instance))
   })
 
   context('unhappy path', () => {

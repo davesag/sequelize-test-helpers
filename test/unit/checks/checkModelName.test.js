@@ -4,6 +4,7 @@ const SimpleModel = require('../../models/Simple')
 
 describe('src/checkModelName', () => {
   const Model = SimpleModel(sequelize, dataTypes)
+
   context('happy path', () => {
     checkModelName(Model)('Simple')
   })

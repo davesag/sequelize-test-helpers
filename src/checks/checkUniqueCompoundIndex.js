@@ -1,10 +1,13 @@
 const { expect } = require('chai')
 
-const checkUniqueCompoundIndex = instance => indecies => {
-  it(`indexed a unique index of ${indecies.join(' and ')}`, () => {
+/**
+ * @deprecated both `checkUniqueIndex` and `checkNonUniqueIndex` will now check for either simple or composite indexes.
+ */
+const checkUniqueCompoundIndex = instance => indexes => {
+  it(`indexed a unique index of ${indexes.join(' and ')}`, () => {
     expect(
       instance.indexes.find(
-        index => index.unique === true && index.fields.join('') === indecies.join('')
+        index => index.unique === true && index.fields.join('') === indexes.join('')
       )
     ).not.to.be.undefined
   })

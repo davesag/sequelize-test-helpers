@@ -78,7 +78,8 @@ const model = (sequelize, DataTypes) => {
     {
       indexes: [
         { unique: true, fields: ['email'] },
-        { unique: true, fields: ['token'] }
+        { unique: true, fields: ['token'] },
+        { unique: false, fields: ['firstName', 'lastName'] }
       ]
     }
   )
@@ -133,21 +134,32 @@ describe('src/models/User', () => {
   })
 
   context('indexes', () => {
-    ;['email', 'token'].forEach(checkUniqueIndex(user))
+    context('unique', () => {
+      ;['email', 'token'].forEach(checkUniqueIndex(user))
+    })
+
+    context('non unique (and also composite in this example)', () => {
+      ;[['firstname', 'lastname']].forEach(checkNonUniqueIndex(user))
+    })
   })
 })
 ```
 
 ### Built-in checks
 
-| Check                      | What it does                                             |
-| -------------------------- | -------------------------------------------------------- |
-| `checkHookDefined`         | Checks that a particular hook is defined.                |
-| `checkModelName`           | Checks that the model is named correctly.                |
-| `checkNonUniqueIndex`      | Checks that a specific non-unique index is defined.      |
-| `checkPropertyExists`      | Checks that the model has defined the given property.    |
-| `checkUniqueCompoundIndex` | Checks that a specific unique compound index is defined. |
-| `checkUniqueIndex`         | Checks that a specific unique index is defined.          |
+| Check                 | What it does                                          |
+| --------------------- | ----------------------------------------------------- |
+| `checkHookDefined`    | Checks that a particular hook is defined.             |
+| `checkModelName`      | Checks that the model is named correctly.             |
+| `checkNonUniqueIndex` | Checks that a specific non-unique index is defined.   |
+| `checkPropertyExists` | Checks that the model has defined the given property. |
+| `checkUniqueIndex`    | Checks that a specific unique index is defined.       |
+
+#### Deprecation notice
+
+| Check                      | Note                                                   |
+| -------------------------- | ------------------------------------------------------ |
+| `checkUniqueCompoundIndex` | Use either `checkUniqueIndex` or `checkNonUniqueIndex` |
 
 ### Checking associations
 
