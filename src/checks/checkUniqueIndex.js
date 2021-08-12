@@ -1,11 +1,5 @@
-const { checkSingleIndex, checkAllIndexes } = require('./utils')
+const { checkIndex } = require('./utils')
 
-const checkSingleUniqueIndex = instance => checkSingleIndex(instance, true)
-const checkAllUniqueIndexes = instance => checkAllIndexes(instance, true)
-
-const checkUniqueIndex = instance => indexName =>
-  Array.isArray(indexName)
-    ? checkAllUniqueIndexes(instance)(indexName)
-    : checkSingleUniqueIndex(instance)(indexName)
+const checkUniqueIndex = instance => indexName => checkIndex(instance, indexName, true)
 
 module.exports = checkUniqueIndex
