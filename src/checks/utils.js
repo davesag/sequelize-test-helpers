@@ -19,9 +19,10 @@ const checkAllIndexes = (instance, unique) => indexNames => {
   })
 }
 
-const checkIndex = (instance, indexNameOrNames, unique = false) => {
-  const checkFn = Array.isArray(indexNameOrNames) ? checkAllIndexes : checkSingleIndex
-  return checkFn(instance, unique)(indexNameOrNames)
-}
+const checkIndex = (instance, indexNameOrNames, unique = false) =>
+  (Array.isArray(indexNameOrNames) ? checkAllIndexes : checkSingleIndex)(
+    instance,
+    unique
+  )(indexNameOrNames)
 
 module.exports = { checkIndex }
