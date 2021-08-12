@@ -10,13 +10,15 @@ const model = (sequelize, DataTypes) => {
         }
       },
       lunch: DataTypes.STRING,
+      coffee: DataTypes.STRING,
       uuid: DataTypes.UUID
     },
     {
       indexes: [
         { unique: true, fields: ['uuid'] },
         { unique: false, fields: ['name'] },
-        { unique: true, fields: ['name', 'lunch'] }
+        { unique: true, fields: ['name', 'lunch'] },
+        { unique: false, fields: ['coffee', 'lunch'] }
       ]
     }
   )
