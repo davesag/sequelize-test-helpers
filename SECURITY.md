@@ -15,4 +15,4 @@ You can expect to get an update on a reported vulnerability within 2 working day
 
 ## Vulnerabilities in development dependencies
 
-I'm using `dependabot` to scan for security issues and update dependencies in the `develop` branch regularly.
+I'm using `dependabot` and `snyk` to scan for security issues and I update dependencies in the `develop` branch regularly.
