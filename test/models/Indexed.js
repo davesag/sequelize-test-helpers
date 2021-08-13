@@ -18,7 +18,7 @@ const model = (sequelize, DataTypes) => {
         { unique: true, fields: ['uuid'] },
         { unique: false, fields: ['name'] },
         { unique: true, fields: ['name', 'lunch'] },
-        { unique: false, fields: ['coffee', 'lunch'] }
+        { fields: ['coffee', 'lunch'] } // leave out index: false here to test falsiness
       ]
     }
   )

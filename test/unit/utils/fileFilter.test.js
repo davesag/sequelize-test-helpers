@@ -1,5 +1,5 @@
 const { expect } = require('chai')
-const fileFilter = require('../../../src/utils/fileFilter')
+const { fileFilter } = require('../../../src/utils')
 
 describe('src/utils/fileFilter', () => {
   const input = ['test.js', 'skip-this', 'index.js', '.skip.this.js']

@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const fileFilter = require('./utils/fileFilter')
+const { fileFilter } = require('./utils')
 
 const PROJECT_ROOT = process.cwd()
 
