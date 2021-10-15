@@ -1,43 +1,27 @@
-version: 2
+version: 2.1
+
+orbs:
+  node: circleci/node@4.7.0
+  codecov: codecov/codecov@3.2.0
 
 jobs:
-  build:
-    docker:
-      - image: circleci/node:latest
-
+  test:
+    executor:
+      name: node/default
+      tag: 'current'
     steps:
       - checkout
-
-      - restore_cache:
-          keys:
-          - dependencies-v2-{{ checksum "package.json" }}
-
-      - run:
-          name: Install global packages
-          command: sudo npm install -g codecov
-
-      - run:
-          name: Install dependencies
-          command: npm install
-
-      - save_cache:
-          key: dependencies-v2-{{ checksum "package.json" }}
-          paths:
-            - node_modules
-
+      - node/install-packages
       - run:
           name: Javascript Linter
           command: npm run lint
-
       - run:
-          name: All Unit Tests with Code Coverage
+          name: Unit tests with code coverage
           command: npm run test:unit:cov
 
-      # Far too flakey to run on CI
-      # - run:
-      #     name: Mutation Tests
-      #     command: npm run test:mutants
-
-      - run:
-          name: Send reports to codecov.io
-          command: codecov
+workflows:
+  node-tests:
+    jobs:
+      - test:
+          post-steps:
+            - codecov/upload
