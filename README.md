@@ -301,7 +301,7 @@ describe('src/utils/save', () => {
 })
 ```
 
-As a convenience, `makeMockModels` will automatically populate your `mockModels` with mocks of all of the models defined in your `src/models` folder (or if you have a `.sequelizerc` file it will look for the `model-path` in that). Simply override any of the specific models you need to do stuff with.
+As a convenience, `makeMockModels` will automatically populate your `mockModels` with mocks of all of the models defined in your `src/models` folder (or if you have a `.sequelizerc` file it will look for the `models-path` in that). Simply override any of the specific models you need to do stuff with.
 
 ### Testing models created with `Model.init`
 
@@ -378,7 +378,7 @@ const { listModels } = require('sequelize-test-helpers')
 console.log(listModels()) // will spit out a list of your model names.
 ```
 
-Similarly to `makeMockModels` above, `listModels` will find all of the models defined in your `src/models` folder (or if you have a `.sequelizerc` file it will look for the `model-path` in that).
+Similarly to `makeMockModels` above, `listModels` will find all of the models defined in your `src/models` folder (or if you have a `.sequelizerc` file it will look for the `models-path` in that).
 
 ## Custom `models` paths and custom file suffixes
 
