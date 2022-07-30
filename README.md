@@ -46,14 +46,14 @@ const model = (sequelize, DataTypes) => {
       age: {
         type: DataTypes.INTEGER.UNSIGNED
       },
-      firstname: {
+      firstName: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           notEmpty: true
         }
       },
-      lastname: {
+      lastName: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -120,7 +120,7 @@ describe('src/models/User', () => {
   checkModelName(User)('User')
 
   context('properties', () => {
-    ;['age', 'firstname', 'lastname', 'email', 'token'].forEach(checkPropertyExists(user))
+    ;['age', 'firstName', 'lastName', 'email', 'token'].forEach(checkPropertyExists(user))
   })
 
   context('associations', () => {
@@ -141,7 +141,7 @@ describe('src/models/User', () => {
     })
 
     context('non unique (and also composite in this example)', () => {
-      ;[['firstname', 'lastname']].forEach(checkNonUniqueIndex(user))
+      ;[['firstName', 'lastName']].forEach(checkNonUniqueIndex(user))
     })
   })
 })
@@ -247,8 +247,8 @@ describe('src/utils/save', () => {
 
   const id = 1
   const data = {
-    firstname: 'Testy',
-    lastname: 'McTestface',
+    firstName: 'Testy',
+    lastName: 'McTestFace',
     email: 'testy.mctestface.test.tes',
     token: 'some-token'
   }
@@ -301,7 +301,7 @@ describe('src/utils/save', () => {
 })
 ```
 
-As a convenience, `makeMockModels` will automatically populate your `mockModels` with mocks of all of the models defined in your `src/models` folder (or if you have a `.sequelizerc` file it will look for the `model-path` in that). Simply override any of the specific models you need to do stuff with.
+As a convenience, `makeMockModels` will automatically populate your `mockModels` with mocks of all of the models defined in your `src/models` folder (or if you have a `.sequelizerc` file it will look for the `models-path` in that). Simply override any of the specific models you need to do stuff with.
 
 ### Testing models created with `Model.init`
 
@@ -378,7 +378,7 @@ const { listModels } = require('sequelize-test-helpers')
 console.log(listModels()) // will spit out a list of your model names.
 ```
 
-Similarly to `makeMockModels` above, `listModels` will find all of the models defined in your `src/models` folder (or if you have a `.sequelizerc` file it will look for the `model-path` in that).
+Similarly to `makeMockModels` above, `listModels` will find all of the models defined in your `src/models` folder (or if you have a `.sequelizerc` file it will look for the `models-path` in that).
 
 ## Custom `models` paths and custom file suffixes
 
@@ -406,9 +406,9 @@ By default `makeMockModels` and `listModels` will both look for your models in f
 | `develop` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/develop) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/develop/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | [![Vulnerabilities](https://snyk.io/test/github/davesag/sequelize-test-helpers/develop/badge.svg)](https://snyk.io/test/github/davesag/sequelize-test-helpers/develop) | Work in progress |
 | `main` | [![CircleCI](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/main.svg?style=svg)](https://circleci.com/gh/davesag/sequelize-test-helpers/tree/main) | [![codecov](https://codecov.io/gh/davesag/sequelize-test-helpers/branch/main/graph/badge.svg)](https://codecov.io/gh/davesag/sequelize-test-helpers) | [![Vulnerabilities](https://snyk.io/test/github/davesag/sequelize-test-helpers/main/badge.svg)](https://snyk.io/test/github/davesag/sequelize-test-helpers/main) | Latest stable release |
 
-### Prerequisites
+### Development Prerequisites
 
-- [NodeJS](htps://nodejs.org). I use [`nvm`](https://github.com/creationix/nvm) to manage Node versions — `brew install nvm`.
+- [NodeJS](https://nodejs.org). I use [`nvm`](https://github.com/creationix/nvm) to manage Node versions — `brew install nvm`.
 
 ### Initialisation
 
