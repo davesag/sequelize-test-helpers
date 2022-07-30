@@ -35,7 +35,7 @@
     "test": "npm run test:unit",
     "test:unit": "NODE_ENV=test mocha ./test/unit/ --require ./test/unitTestHelper.js --recursive",
     "test:unit:cov": "NODE_ENV=test nyc mocha ./test/unit/ --require ./test/unitTestHelper.js --recursive",
-    "snyk-protect": "snyk protect"
+    "snyk-protect": "snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -55,6 +55,7 @@
     "chai"
   ],
   "devDependencies": {
+    "@snyk/protect": "^1.981.0",
     "ajv": "^8.11.0",
     "chai": "^4.3.6",
     "chai-as-promised": "^7.1.1",
@@ -73,8 +74,7 @@
     "prettier": "^2.7.1",
     "proxyquire": "^2.1.3",
     "sinon": "^14.0.0",
-    "sinon-chai": "^3.5.0",
-    "snyk": "^1.981.0"
+    "sinon-chai": "^3.5.0"
   },
   "peerDependencies": {
     "chai": ">= 4",
