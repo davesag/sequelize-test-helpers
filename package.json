@@ -55,11 +55,10 @@
     "chai"
   ],
   "devDependencies": {
-    "@snyk/protect": "^1.1180.0",
     "ajv": "^8.12.0",
     "chai": "^4.3.6",
     "chai-as-promised": "^7.1.1",
-    "eslint": "^8.42.0",
+    "eslint": "^8.43.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.27.5",
