@@ -14,8 +14,8 @@ const serialCommaList = words =>
     ? words.length === 1
       ? words[0]
       : words.length === 2
-      ? `${words[0]} and ${words[1]}`
-      : oxford(words)
+        ? `${words[0]} and ${words[1]}`
+        : oxford(words)
     : words
 
 module.exports = serialCommaList
